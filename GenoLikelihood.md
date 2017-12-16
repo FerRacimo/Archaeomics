@@ -1,8 +1,6 @@
 Exercises on demographic analyses with ngsTools and ANGSD - Copenhagen 2017 course
 ===============
-Adapted from: 
-- ngsTools tutorial by Matteo Fumagalli: https://github.com/mfumagalli/ngsTools/blob/master/TUTORIAL.md
-- ANGSD ABBA-BABA tutorial by Thorfinn Korneliussen: http://popgen.dk/angsd/index.php/Abbababa
+Adapted from ngsTools tutorial by Matteo Fumagalli: https://github.com/mfumagalli/ngsTools/blob/master/TUTORIAL.md
 
 In this tutorial we will be using ngsTools and ANGSD to compute summary statistics and perform population genetics analyses from low-depth sequencing data.
 
@@ -15,14 +13,14 @@ cd TutorialDemo
 Data
 ----------
 
-We will use the same data that we used yesterday during Matteo's tutorial. As a reminder, this includes 50 BAM files of a section of chr2 from human samples (i.e. 10 African, 10 Native American, 10 European, 10 East Asian, and 10 Latino individuals), a reference genome, and putative ancestral sequence.
+We will use a dataset that includes 50 BAM files of a section of chr2 from human samples (i.e. 10 African, 10 Native American, 10 European, 10 East Asian, and 10 Latino individuals), a reference genome, and putative ancestral sequence.
 
 The data can be found here:
-/ricco/data/matteo/Data
+XXXX
 
 As before, let’s create a shortcut for this directory, as we will refer to it quite a lot in our command lines:
 ```
-DATA=/ricco/data/matteo/Data
+DATA=XXXX
 ```
 
 We also have a reference and an ancestral sequence in FASTA format. Let’s also make shortcuts for them:
@@ -35,7 +33,7 @@ Side-note: in case an ancestral sequence is not available, analyses on the SFS a
 
 Throughout the tutorial, we will also use a number of R scripts that can be downloaded from the ngsTools github website. Let’s make a shortcut to them too:
 ```
-SCRIPTS=/ricco/data/fernando/Scripts
+SCRIPTS=XXX/Scripts
 ```
 
 Summary statistics using ANGSD
