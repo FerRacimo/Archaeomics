@@ -1,11 +1,22 @@
+Exercises using PCA and Admixture
+===============
+
+In this tutorial we will be using ...
+
+First, inside your home directory, create a new directory where we will be working and go into it:
+
+
 # Data processing
 
 First, we'll make a record of which are the SNPs in chrX and chrY, so we can get rid of them later.
 
-
+```
 cat NearEastPublic/HumanOriginsPublic2068.snp | tr -s " " | awk 'BEGIN{OFS="\t"}{if ($2 == "23" || $2 == "24") print}' > Data/toremove.snp
+```
 
 mkdir Data
+
+
 # Convert from packed eigenstrat to packed ped format
 convertf -p geno2plink.par
 # Fix *fam file
