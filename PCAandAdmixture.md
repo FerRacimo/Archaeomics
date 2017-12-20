@@ -43,15 +43,19 @@ Now, run convertf:
 convertf -p geno2plink.par
 ```
 
+We now need to fix the *fam file to remove unwanted spaces:
 
-# Fix *fam file
-paste <(cat NearEastPublic/HumanOriginsPublic2068.ind | awk '{print $3}') <( cat Data/HumanOriginsPublic2068.fam | awk 'BEGIN{OFS="\t"}{print $2,$3,$4,$
-5,$6}') > temp.fam
+```
+paste <(cat NearEastPublic/HumanOriginsPublic2068.ind | awk '{print $3}') <( cat Data/HumanOriginsPublic2068.fam | awk 'BEGIN{OFS="\t"}{print $2,$3,$4,$5,$6}') > temp.fam
 mv temp.fam Data/HumanOriginsPublic2068.fam
-# Make list of families to extract
+```
+
+Now, we'll make a list of populations ("plink families") to focus on for donwstream analyses, and extract them from the plink file:
+
+```
 echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\tHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana" > Data/groups_to_keep.txt
-# Extract populations
 plink --bfile Data/HumanOriginsPublic2068 --keep-fam Data/groups_to_keep.txt --make-bed --out Data/HumanOriginsPublic2068_reduced
+```
 
 # LD pruning
 
