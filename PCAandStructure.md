@@ -1,4 +1,8 @@
-# Record chrX and chrY SNPs
+# Data processing
+
+First, we'll make a record of which are the SNPs in chrX and chrY, so we can get rid of them later.
+
+
 cat NearEastPublic/HumanOriginsPublic2068.snp | tr -s " " | awk 'BEGIN{OFS="\t"}{if ($2 == "23" || $2 == "24") print}' > Data/toremove.snp
 
 mkdir Data
@@ -13,7 +17,7 @@ echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\tHan\nAmi\nYoruba\nMbut
 # Extract populations
 plink --bfile Data/HumanOriginsPublic2068 --keep-fam Data/groups_to_keep.txt --make-bed --out Data/HumanOriginsPublic2068_reduced
 
-
+# LD pruning
 
 
 # PCA - takes time
