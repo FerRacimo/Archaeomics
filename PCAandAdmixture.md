@@ -3,8 +3,6 @@ Exercises using PCA and Admixture
 
 In this tutorial we will be using ...
 
-First, inside your home directory, create a new directory where we will be working and go into it:
-
 
 # Data processing
 
@@ -16,9 +14,18 @@ cat NearEastPublic/HumanOriginsPublic2068.snp | tr -s " " | awk 'BEGIN{OFS="\t"}
 
 mkdir Data
 
+Now, let's convert the genotype file from "packed eigenstrat" format to packed ped format
 
-# Convert from packed eigenstrat to packed ped format
+We'll need to define a parameter file for convertf, which we'll call geno2plink.par:
+
+
+Now, run convertf:
+
+```
 convertf -p geno2plink.par
+```
+
+
 # Fix *fam file
 paste <(cat NearEastPublic/HumanOriginsPublic2068.ind | awk '{print $3}') <( cat Data/HumanOriginsPublic2068.fam | awk 'BEGIN{OFS="\t"}{print $2,$3,$4,$
 5,$6}') > temp.fam
