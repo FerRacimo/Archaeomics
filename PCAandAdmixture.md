@@ -3,21 +3,39 @@ Exercises using PCA and Admixture
 
 In this tutorial we will be using ...
 
+We'll begin by downloading a gentoype data file from Lazaridis et al. 2016, containing SNP capture data from a variety of present-day and ancient populations:
+
+...
+
+Let's create a folder where we'll dump all our data files:
+
+```
+mkdir Data
+```
 
 # Data processing
 
-First, we'll make a record of which are the SNPs in chrX and chrY, so we can get rid of them later.
+Before we can start our analysis, we'll need to process the data in a certain way.
+
+We only want to work with autosomal SNPs, so we'll first make a record of the SNPs that are located in chrX and chrY, so we can get rid of them later.
 
 ```
 cat NearEastPublic/HumanOriginsPublic2068.snp | tr -s " " | awk 'BEGIN{OFS="\t"}{if ($2 == "23" || $2 == "24") print}' > Data/toremove.snp
 ```
 
-mkdir Data
+Now, let's convert the genotype file from "packed eigenstrat" format to packed ped format. We'll need to define a parameter file for convertf, which we'll call geno2plink.par. Open your favorite text editor and write down the following lines:
 
-Now, let's convert the genotype file from "packed eigenstrat" format to packed ped format
 
-We'll need to define a parameter file for convertf, which we'll call geno2plink.par:
-
+```
+genotypename:   NearEastPublic/HumanOriginsPublic2068.geno
+snpname:        NearEastPublic/HumanOriginsPublic2068.snp
+indivname:      NearEastPublic/HumanOriginsPublic2068.ind
+outputformat:    PACKEDPED
+genotypeoutname: Data/HumanOriginsPublic2068.bed
+snpoutname:      Data/HumanOriginsPublic2068.bim
+indivoutname:    Data/HumanOriginsPublic2068.fam
+badsnpname:      Data/toremove.snp
+```
 
 Now, run convertf:
 
