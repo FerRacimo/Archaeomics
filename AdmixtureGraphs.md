@@ -27,7 +27,7 @@ done
 
 We can visualize the results using the XXX R script.
 
-Study the topology of the graph? Which admixture events do we observe? Do these make sense based on your knowledge of human history?
+Study the topology of the graph. Which admixture events do you observe? Do these make sense based on your knowledge of human history?
 
 Take a look at the length of the branches in the tree. Why are some branches much longer than others? What does the length here represent?
 
