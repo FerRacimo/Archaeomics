@@ -3,7 +3,7 @@ Exercises using PCA and Admixture
 
 In this tutorial we will be using ...
 
-We'll begin by downloading a gentoype data file from Lazaridis et al. 2016, containing SNP capture data from a variety of present-day and ancient populations:
+We'll begin by downloading a genotype data file from Lazaridis et al. 2016, containing SNP capture data from a variety of present-day and ancient populations:
 
 ...
 
