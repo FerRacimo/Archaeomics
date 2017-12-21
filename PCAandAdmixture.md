@@ -91,6 +91,7 @@ Rscript scripts/PlotPCA.R PCA/eigenvectors.txt Data/HumanOriginsPublic2068_reduc
 xpdf PCA/PCA_World.pdf
 ```
 
+Which groups are separated along the first component of variation? How much variance in the data is captured by this component? Which groups are separated along the second component? Why do you think this is?
 
 # Admixture analysis
 
