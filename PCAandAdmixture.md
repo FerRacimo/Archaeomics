@@ -118,8 +118,8 @@ cd Admixture
 Let's run the Admixture program with K=1, K=2, K=3 and K=4 and K=5 ancestral components. Note that this will take some time to run as the algorithm performs a series of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call). We'll use the --cv flag so that the program also performs 5-fold cross-validation in each run.
 
 ```
-for i in {1..5}; do
-admixture --cv ../Data/HumanOriginsPublic2068_reduced_pruned.bed $i  | tee log${K}.out
+for K in {1..5}; do
+admixture --cv ../Data/HumanOriginsPublic2068_reduced_pruned.bed $K  | tee log_${K}.out
 done
 ```
 
@@ -138,4 +138,4 @@ We can also look at the cross-validation errors:
 grep -h CV log*.out
 ```
 
-Have they reached a plateau? If so, where? What does this mean?
+Have they reached a minimum? If so, at which value of K? What does this mean?
