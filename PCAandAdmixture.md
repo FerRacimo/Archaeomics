@@ -71,6 +71,7 @@ plink --bfile Data/HumanOriginsPublic2068_reduced --extract plink.prune.in --mak
 
 The first command makes a list of SNPs that will be targeted for removal. These are SNPs with an r^2 value greater than 0.1 with any other SNP within a 50-SNP sliding window (with a 10-SNP overlap between windows). The second command performs the pruning.
 
+Compare the number of SNPs in the Data/HumanOriginsPublic2068_reduced.bim file and the Data/HumanOriginsPublic2068_reduced_pruned.bim file. How many SNPs did we remove? How many did we keep?
 
 # PCA
 
