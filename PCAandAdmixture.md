@@ -134,6 +134,8 @@ echo -e "K3_run1\t3\tK3/HumanOriginsPublic2068_reduced_pruned.3.Q" > filemap.txt
 
 We can also look at the cross-validation errors:
 
+```
 grep -h CV log*.out
+```
 
 Have they reached a plateau? If so, where? What does this mean?
