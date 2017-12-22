@@ -1,23 +1,25 @@
 Exercises using PCA and Admixture
 ===============
 
-In this tutorial we will be using ...
+In this tutorial we will be using a SNP capture dataset produced by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomes from both ancient and present-day populations.
 
-We'll begin by downloading a genotype data file from Lazaridis et al. 2016, containing SNP capture data from a variety of present-day and ancient populations:
+We'll begin by downloading the genotype data file:
 
-...
+```
+wget https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/NearEastPublic.tar.gz
+tar xvzf NearEastPublic.tar.gz
+```
 
-Let's create a folder where we'll dump all our data files:
+Let's create a folder where we'll dump all our intermediate data files:
 
 ```
 mkdir Data
 ```
 
+
 # Data processing
 
-Before we can start our analysis, we'll need to process the data in a certain way.
-
-We only want to work with autosomal SNPs, so we'll first make a record of the SNPs that are located in chrX and chrY, so we can get rid of them later.
+Before we can start our analysis, we'll need to clean our data for downstream analyses. We only want to work with autosomal SNPs, so we'll first make a record of the SNPs that are located in chrX and chrY, so we can get rid of them later.
 
 ```
 cat NearEastPublic/HumanOriginsPublic2068.snp | tr -s " " | awk 'BEGIN{OFS="\t"}{if ($2 == "23" || $2 == "24") print}' > Data/toremove.snp
