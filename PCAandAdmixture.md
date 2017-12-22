@@ -128,7 +128,7 @@ cd ..
 
 Look at the output files in the Admixture folder. Based on today's lecture, what do you think each of these represent?
 
-We can visualize the admixture components of each individual using a barplot in R:
+We can visualize the admixture components of each individual using a barplot in R. For example, for K=3:
 
 ```
 R
@@ -138,10 +138,12 @@ inds <- read.table("Data/HumanOriginsPublic2068_reduced_pruned.fam",header=FALSE
 barplot(t(as.matrix(tbl)), col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.3,names=inds[,1])
 ```
 
+Note that there are visualization programs better suited for exploring results from Admixture and other programs based on the Structure algorithms. One that is very useful and practical to use is Pong: https://github.com/ramachandran-lab/pong
+
 We can also look at the cross-validation errors:
 
 ```
 grep -h CV log*.out
 ```
 
-Have they reached a minimum? If so, at which value of K? What does this mean?
+Plot these values in R. Have they reached a minimum? If so, at which value of K? What does this mean?
