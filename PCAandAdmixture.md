@@ -116,14 +116,15 @@ cd Admixture
 mkdir K3
 ```
 
-Run Admixture with K=3
+Let's run the Admixture program with K=2, K=3 and K=4 ancestral components. Note that this will take some time to run as the algorithm performs a serioes of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call).
 
 ```
-cd K3; admixture ../../Data/HumanOriginsPublic2068_reduced_pruned.bed 3; cd ..
-
+for i in {2..4}; do
+cd K${i}; admixture ../../Data/HumanOriginsPublic2068_reduced_pruned.bed $i; cd ..
+done
 ```
 
-Visualize results with pong
+We can visualize the results with pong...
 
 ```
 echo -e "K3_run1\t3\tK3/HumanOriginsPublic2068_reduced_pruned.3.Q" > filemap.txt
