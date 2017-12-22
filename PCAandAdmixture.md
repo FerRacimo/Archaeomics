@@ -124,6 +124,8 @@ cd K${i}; admixture ../../Data/HumanOriginsPublic2068_reduced_pruned.bed $i; cd 
 done
 ```
 
+Now look at the output files. Based on today's lecture, what do you think each of these represent?
+
 We can visualize the results with pong...
 
 ```
