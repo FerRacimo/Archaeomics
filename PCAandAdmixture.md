@@ -83,9 +83,9 @@ mkdir PCA
 Now, create a parameter file for PCA (called pca.par), using your favorite text editor:
 
 ```
-genotypename: Data/HumanOriginsPublic2068_reduced.bed
-snpname:      Data/HumanOriginsPublic2068_reduced.bim
-indivname:    Data/HumanOriginsPublic2068_reduced.fam
+genotypename: Data/HumanOriginsPublic2068_reduced_pruned.bed
+snpname:      Data/HumanOriginsPublic2068_reduced_pruned.bim
+indivname:    Data/HumanOriginsPublic2068_reduced_pruned.fam
 evecoutname:  PCA/eigenvectors.txt
 evaloutname:  PCA/eigenvalues.txt
 numoutlieriter: 0
@@ -100,7 +100,7 @@ smartpca -p pca.par
 To visualize the first 2 principal components from the PCA, we'll use an R script:
 
 ```
-Rscript scripts/PlotPCA.R PCA/eigenvectors.txt Data/HumanOriginsPublic2068_reduced.fam PCA/PCA_World.pdf
+Rscript scripts/PlotPCA.R PCA/eigenvectors.txt Data/HumanOriginsPublic2068_reduced_pruned.fam PCA/PCA_World.pdf
 xpdf PCA/PCA_World.pdf
 ```
 
@@ -117,13 +117,13 @@ mkdir K3
 Run Admixture with K=3
 
 ```
-cd K3; admixture ../../Data/HumanOriginsPublic2068_reduced.bed 3; cd ..
+cd K3; admixture ../../Data/HumanOriginsPublic2068_reduced_pruned.bed 3; cd ..
 
 ```
 
 Visualize results with pong
 
 ```
-echo -e "K3_run1\t3\tK3/HumanOriginsPublic2068_reduced.3.Q" > filemap.txt
+echo -e "K3_run1\t3\tK3/HumanOriginsPublic2068_reduced_pruned.3.Q" > filemap.txt
 
 ```
