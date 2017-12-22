@@ -110,26 +110,32 @@ Look at the file containing the eigenvalues. The value of a particular eigenvalu
 
 # Admixture analysis
 
+Let's create a directory to dump our Admixture ouput files:
+
 ```
 mkdir Admixture
+```
+
+Now, we'll run the Admixture program with K=1, K=2, K=3 and K=4 and K=5 ancestral components. Note that this will take some time to run as the algorithm performs a series of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call). We'll use the --cv flag so that the program also performs 5-fold cross-validation in each run.
+
+```
 cd Admixture
-```
-
-Let's run the Admixture program with K=1, K=2, K=3 and K=4 and K=5 ancestral components. Note that this will take some time to run as the algorithm performs a series of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call). We'll use the --cv flag so that the program also performs 5-fold cross-validation in each run.
-
-```
 for K in {1..5}; do
 admixture --cv ../Data/HumanOriginsPublic2068_reduced_pruned.bed $K  | tee log_${K}.out
 done
+cd ..
 ```
 
-Now look at the output files. Based on today's lecture, what do you think each of these represent?
+Look at the output files in the Admixture folder. Based on today's lecture, what do you think each of these represent?
 
-We can visualize the results with pong...
+We can visualize the admixture components of each individual using a barplot in R:
 
 ```
-echo -e "K3_run1\t3\tK3/HumanOriginsPublic2068_reduced_pruned.3.Q" > filemap.txt
-
+R
+K=3
+tbl <- read.table(paste("Admixture/HumanOriginsPublic2068_reduced_pruned.",K,.Q",sep=""),header=FALSE)
+inds <- read.table("Data/HumanOriginsPublic2068_reduced_pruned.fam",header=FALSE) 
+barplot(t(as.matrix(tbl)), col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.3,names=inds[,1])
 ```
 
 We can also look at the cross-validation errors:
