@@ -119,7 +119,7 @@ Let's run the Admixture program with K=1, K=2, K=3 and K=4 and K=5 ancestral com
 
 ```
 for i in {1..5}; do
-admixture ../Data/HumanOriginsPublic2068_reduced_pruned.bed $i  | tee log${K}.out
+admixture --cv ../Data/HumanOriginsPublic2068_reduced_pruned.bed $i  | tee log${K}.out
 done
 ```
 
