@@ -116,7 +116,7 @@ cd Admixture
 mkdir K3
 ```
 
-Let's run the Admixture program with K=2, K=3 and K=4 ancestral components. Note that this will take some time to run as the algorithm performs a serioes of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call).
+Let's run the Admixture program with K=2, K=3 and K=4 ancestral components. Note that this will take some time to run as the algorithm performs a series of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call).
 
 ```
 for i in {2..4}; do
