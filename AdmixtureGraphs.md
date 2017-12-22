@@ -8,20 +8,20 @@ mkdir TreeMix
 First, we need to stratify our individual allele frequencies by populations:
 
 ```
-plink --bfile Data/HumanOriginsPublic2068_reduced --freq --missing --family --out Data/HumanOriginsPublic2068_reduced
+plink --bfile Data/HumanOriginsPublic2068_reduced_pruned --freq --missing --family --out Data/HumanOriginsPublic2068_reduced_pruned
 gzip Data/HumanOriginsPublic2068_reduced.frq.strat
 ```
 
 Let's convert our plink files into treemix format.
 
 ```
-python scripts/plink2treemix.py Data/HumanOriginsPublic2068_reduced.frq.strat.gz Data/HumanOriginsPublic2068_reduced.treemix.frq.gz
+python scripts/plink2treemix.py Data/HumanOriginsPublic2068_reduced_pruned.frq.strat.gz Data/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz
 ```
 Now, let's sequentially run TreeMix with 0, 1, 2 and 3 migration events:
 
 ```
 for mig in {0,1,2,3}; do
-treemix -i Data/HumanOriginsPublic2068_reduced.treemix.frq.gz -o TreeMix/treemix_output_m$mig -m $mig -root Ju_hoan_North -k 50
+treemix -i Data/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz -o TreeMix/treemix_output_m$mig -m $mig -root Ju_hoan_North -k 50
 done
 ```
 
