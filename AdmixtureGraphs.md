@@ -36,13 +36,13 @@ Take a look at the length of the branches in the tree. Why are some branches muc
 
 We can now do a more supervised exploration of our populations' history, using qpGraph...
 
-We need to create a parameter file first:
+We need to create a parameter file (graphpar.par) first:
 
 
 ```
 ```
 
-We also need to create a graph topology file. Here's a (badly fitting) example:
+We also need to create a graph topology file. Below is a (badly fitting) example. Copy this text to a file and call it graph1.txt:
 
 ```
 ```
@@ -50,9 +50,9 @@ We also need to create a graph topology file. Here's a (badly fitting) example:
 Finally, we run qpGraph and dump the output into a logfile:
 
 ```
-qpGraph -p XXX -g XXX > logfile_graph1.txt
+qpGraph -p graphpar.par -g graph1.txt > logfile_graph1.txt
 ```
 
-Take a look at the logfile
+Take a look at the logfile...
 
 Modify the graph file until you find a topology that gives you a good fit. A heuristic rule is to find a fit in which the worst-fitting f4 statistic has a Z-score whose absolute value is less than 3. One also generally aims to find parsimonious fits: we can generate arbitrarily good fits by just filling the graph with a large number of admixture events, but such a fit may be overly complex and perhaps not very realistic.
