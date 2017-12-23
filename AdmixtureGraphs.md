@@ -5,7 +5,7 @@ Let's begin by fitting the following populations using TreeMix, an (almost-)unsu
 mkdir TreeMix
 ```
 
-First, we need to stratify our individual allele frequencies by populations:
+First, we need to stratify our individual allele frequencies by populations. For this, we'll use the --freq functionality in plink:
 
 ```
 plink --bfile Data/HumanOriginsPublic2068_reduced_pruned --freq --missing --family --out Data/HumanOriginsPublic2068_reduced_pruned
@@ -46,5 +46,13 @@ We also need to create a graph topology file. Here's a (badly fitting) example:
 
 ```
 ```
+
+Finally, we run qpGraph and dump the output into a logfile:
+
+```
+qpGraph -p XXX -g XXX > logfile_graph1.txt
+```
+
+Take a look at the logfile
 
 Modify the graph file until you find a topology that gives you a good fit. A heuristic rule is to find a fit in which the worst-fitting f4 statistic has a Z-score whose absolute value is less than 3. One also generally aims to find parsimonious fits: we can generate arbitrarily good fits by just filling the graph with a large number of admixture events, but such a fit may be overly complex and perhaps not very realistic.
