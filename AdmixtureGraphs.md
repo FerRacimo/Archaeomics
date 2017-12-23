@@ -36,6 +36,10 @@ Take a look at the length of the branches in the tree. Why are some branches muc
 
 We can now do a more supervised exploration of our populations' history, using qpGraph...
 
+```
+mkdir qpGraph
+```
+
 We need to create a parameter file (graphpar.par) first:
 
 
@@ -50,7 +54,7 @@ We also need to create a graph topology file. Below is a (badly fitting) example
 Finally, we run qpGraph and dump the output into a logfile:
 
 ```
-qpGraph -p graphpar.par -g graph1.txt > logfile_graph1.txt
+qpGraph -p graphpar.par -g graph1.txt > qpGraph/logfile_graph1.txt
 ```
 
 Take a look at the logfile...
