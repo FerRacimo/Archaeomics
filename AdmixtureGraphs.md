@@ -39,7 +39,7 @@ source("scripts/plotting_funcs.R")
 plot_tree("TreeMix/treemix_output_m0")
 ```
 
-Plot the other graphs and study their respective topologies. Which admixture events do you observe? Do these make sense based on your knowledge of human history? Note that some migration events may be added because of poor representation of certain populations that may have been important in human history. For example, we're not including Denisovans and Neanderthals in this tree, which are known to have contributed ancestry to Papuans and non-Africans, respectively.
+Plot the other graphs and study their respective topologies. Which admixture events do you observe? Do these make sense based on your knowledge of human history? Note that some migration events may be added because of poor representation of certain populations that may have been important in human history. For example, we're not including Denisovans and Neanderthals in our graphs, which are known to have contributed ancestry to Papuans and non-Africans, respectively.
 
 Take a look at the length of the branches in the tree. Why are some branches much longer than others? What does the length here represent?
 
@@ -51,7 +51,7 @@ source("scripts/plotting_funcs.R")
 plot_resid("TreeMix/treemix_output_m0", "TreeMix/pop_order.txt")
 ```
 
-Take a careful look at these residuals. Which pairs of populations are worst-fitted under each graph?
+Take a look at these residuals. Which pairs of populations are worst-fitted under each graph?
 
 
 # qpGraph
@@ -63,7 +63,6 @@ mkdir qpGraph
 ```
 
 We need to create a parameter file (graphpar.par) first:
-
 
 ```
 ```
@@ -81,4 +80,4 @@ qpGraph -p graphpar.par -g graph1.txt > qpGraph/logfile_graph1.txt
 
 Take a look at the logfile...
 
-Modify the graph file until you find a topology that gives you a good fit. A heuristic rule is to find a fit in which the worst-fitting f4 statistic has a Z-score whose absolute value is less than 3. One also generally aims to find parsimonious fits: we can generate arbitrarily good fits by just filling the graph with a large number of admixture events, but such a fit may be overly complex and perhaps not very realistic.
+Modify the graph file and find topologies that provide better fits than the example. In general, a heuristic rule when fitting data is to try to find a fit in which the worst-fitting f4 statistic has a Z-score whose absolute value is less than 3. One also generally aims to find parsimonious fits: we can generate arbitrarily good fits by just filling the graph with a large number of admixture events, but such a fit may be overly complex and perhaps not very realistic.
