@@ -56,7 +56,7 @@ Take a look at these residuals. Which pairs of populations are worst-fitted unde
 
 # qpGraph
 
-We can also do a more supervised exploration of our populations' history, using qpGraph...
+We can also do a more supervised exploration of our populations' history with qpGraph, which uses the set of all possible f4 statistics among our set of populations as summary statistics to fit a graph to the data. Let's create a folder to dump our results.
 
 ```
 mkdir qpGraph
@@ -67,7 +67,7 @@ We need to create a parameter file (graphpar.par) first:
 ```
 ```
 
-We also need to create a graph topology file. Below is a (badly fitting) example. Copy this text to a file and call it graph1.txt:
+We also need to create a graph topology file. Unlike in TreeMix, qpGraph requires the user to specify the topology of the graph, and finds the best fitting branch lengths and admixture rates that are possible under that particular topology. We'll focus on a subset of populations: Karitiana, Yoruba, French, Sardinian and Orcadian. Below is a (badly fitting) example. Copy this text to a file and call it graph1.txt:
 
 ```
 ```
@@ -80,4 +80,9 @@ qpGraph -p graphpar.par -g graph1.txt > qpGraph/logfile_graph1.txt
 
 Take a look at the logfile...
 
-Modify the graph file and find topologies that provide better fits than the example. In general, a heuristic rule when fitting data is to try to find a fit in which the worst-fitting f4 statistic has a Z-score whose absolute value is less than 3. One also generally aims to find parsimonious fits: we can generate arbitrarily good fits by just filling the graph with a large number of admixture events, but such a fit may be overly complex and perhaps not very realistic.
+We can visualize the fitted graph...
+
+```
+```
+
+Modify the graph file to look for graph topologies that provide better fits than the example (using the same set of populations). In general, a heuristic rule when fitting data is to try to find a fit in which the worst-fitting f4 statistic has a Z-score whose absolute value is less than 3. One also generally aims to find parsimonious fits: we can generate arbitrarily good fits by just filling the graph with a large number of admixture events, but such a fit may be overly complex and perhaps not very realistic.
