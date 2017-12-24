@@ -1,7 +1,7 @@
 
 # Data processing
 
-First, let's convert our pruned plink files back to packed eigenstrat format. Use a new parameter file (plink2geno.par), with the following information:
+First, let's convert our pruned plink files to packed eigenstrat format. Use a new parameter file (plink2geno.par), with the following information:
 
 ```
 genotypename: Data/HumanOriginsPublic2068_reduced_pruned.bed
