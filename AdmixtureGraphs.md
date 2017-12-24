@@ -89,9 +89,13 @@ We also need to create a graph topology file. Unlike in TreeMix, qpGraph require
 ```
 
 The first line sets the name of the root. The next few lines can serve to give alternative labels to the populations we'll analyze (in our case, we'll keep the same names as in the genotype file). Then, we specify each of the branches in the format:
+
 edge [edge_label] [edge_parent_node] [edge_child_node]
+
 Finally, we specify any admixed nodes we may want to introduce:
+
 admix [child_node] [parent_1] [parent_2] [admixture_rate_1] [admixture_rate_2]
+
 The admixture rates specified in the graph file only serve as a starting point for the fitting algorithm, and may be different in the outputted graph. Unless one has any prior information on these rates, one can just set them to be 50/50.
 
 Finally, we run qpGraph and dump the output into a logfile:
