@@ -28,7 +28,7 @@ done
 Let's also make a file containing a list of the populations we're studying (we'll need this later to plot the residuals of our fitted graphs):
 
 ```
-echo -e "Ju_hoan_North\nMbuti\nYoruba\nFrench\nSardinian\nItalian_North\nOrcadian\nPapuan\nAmi\nMayan\nKaritiana" > pop_order.txt
+echo -e "Ju_hoan_North\nMbuti\nYoruba\nFrench\nSardinian\nItalian_North\nOrcadian\nPapuan\nAmi\nMayan\nKaritiana" > TreeMix/pop_order.txt
 ```
 
 We can visualize the results using R scripts that can be downloaded along with the treemix program. For example, for a tree with no migration events, we can plot the corresponding graph as follows.
