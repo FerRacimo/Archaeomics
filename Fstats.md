@@ -20,6 +20,13 @@ Run convertf:
 convertf -p plink2geno.par
 ```
 
+Before we proceed, we need to clean up our ind file:
+
+```
+
+```
+
+
 # Outgroup F3 statistics
 
 
