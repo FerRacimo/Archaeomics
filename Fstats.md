@@ -23,7 +23,8 @@ convertf -p plink2geno.par
 Before we proceed, we need to clean up our ind file:
 
 ```
-
+paste <(cut -d ":" -f 2 HumanOriginsPublic2068_reduced_pruned.ind | cut -d " "  -f 1) <(cut -d ":" -f 2 HumanOriginsPublic2068_reduced_pruned.ind | cut -d " " -f 2) <(cut -d ":" -f 1  HumanOriginsPublic2068_reduced_pruned.ind | sed 's/ //g') > temp.txt
+mv temp.txt HumanOriginsPublic2068_reduced_pruned.ind
 ```
 
 
