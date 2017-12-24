@@ -1,5 +1,5 @@
 # TreeMix
-Let's begin by fitting the following populations using TreeMix, an (almost-)unsupervised admixture graph program: XXX,XXX,XXX
+Let's begin by fitting the following populations using TreeMix, an (almost-)unsupervised admixture graph program. We'll use the same populations we worked on when performing the PCA and Admixture analyses.
 
 ```
 mkdir TreeMix
