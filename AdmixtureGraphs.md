@@ -9,7 +9,7 @@ First, we need to stratify our individual allele frequencies by populations. For
 
 ```
 plink --bfile Data/HumanOriginsPublic2068_reduced_pruned --freq --missing --family --out Data/HumanOriginsPublic2068_reduced_pruned
-gzip Data/HumanOriginsPublic2068_reduced.frq.strat
+gzip Data/HumanOriginsPublic2068_reduced_pruned.frq.strat
 ```
 
 Let's convert our plink files into treemix format.
@@ -17,7 +17,7 @@ Let's convert our plink files into treemix format.
 ```
 python scripts/plink2treemix.py Data/HumanOriginsPublic2068_reduced_pruned.frq.strat.gz Data/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz
 ```
-Now, let's sequentially run TreeMix with 0, 1, 2 and 3 migration events:
+Now, let's sequentially run TreeMix with 0, 1, 2 and 3 migration events. We'll set Ju_hoan_North to be on one side of the root of the tree.
 
 ```
 for mig in {0,1,2,3}; do
