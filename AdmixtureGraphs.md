@@ -65,7 +65,23 @@ mkdir qpGraph
 We need to create a parameter file (graphpar.par) first:
 
 ```
+DIR:    Data
+indivname:       DIR/merged.v3.fixed.ind
+snpname:         DIR/merged.v3.fixed.snp
+genotypename:    DIR/merged.v3.fixed.geno
+outpop:         NULL
+blgsize:        0.05
+lsqmode:       YES
+diag:          .0001
+hires:         YES
+initmix:      1000
+precision:    .0001
+zthresh:      3.0
+terse:        NO
+useallsnps:   NO
 ```
+
+This file specifies the location of the genotype files are and some optional settings in the admixture graph fitting. You can learn more about the specific parameters in the qpGraph manual: https://github.com/DReichLab/AdmixTools/blob/master/README.QPGRAPH
 
 We also need to create a graph topology file. Unlike in TreeMix, qpGraph requires the user to specify the topology of the graph, and finds the best fitting branch lengths and admixture rates that are possible under that particular topology. We'll focus on a subset of populations: Karitiana, Yoruba, French, Sardinian and Orcadian. Below is a (badly fitting) example. Copy this text to a file and call it graph1.txt:
 
