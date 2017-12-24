@@ -35,8 +35,6 @@ We'll begin by computing outgroup F3 statistics to determine which are the popul
 
 Now, let's hypothesize that French are an admixed group. We'll try to find...
 
-# D-statistic
+# D-statistics
 
-
-# qpWave / qpAdm
 
