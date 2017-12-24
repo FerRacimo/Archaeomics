@@ -29,8 +29,11 @@ mv Data/temp.txt Data/HumanOriginsPublic2068_reduced_pruned.ind
 
 # Outgroup F3 statistics
 
+We'll begin by computing outgroup F3 statistics to determine which are the populations that share the most drift with French. We'll use Ju_hoan_North as the outgroup.
 
 # Admixture F3 statistics
+
+Now, let's hypothesize that French are an admixed group. We'll try to find...
 
 # D-statistic
 
