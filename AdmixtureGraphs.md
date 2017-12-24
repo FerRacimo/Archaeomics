@@ -25,16 +25,38 @@ treemix -i Data/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz -o TreeMix/
 done
 ```
 
-We can visualize the results using the XXX R script.
+Let's also make a file containing a list of the populations we're studying (we'll need this later to plot the residuals of our fitted graphs):
 
-Study the topology of the graph. Which admixture events do you observe? Do these make sense based on your knowledge of human history?
+```
+echo -e "Ju_hoan_North\nMbuti\nYoruba\nFrench\nSardinian\nItalian_North\nOrcadian\nPapuan\nAmi\nMayan\nKaritiana" > pop_order.txt
+```
+
+We can visualize the results using R scripts that can be downloaded along with the treemix program. For example, for a tree with no migration events, we can plot the corresponding graph as follows.
+
+```
+R
+source("scripts/plotting_funcs.R")
+plot_tree("TreeMix/treemix_output_m0")
+```
+
+Plot the other graphs and study their respective topologies. Which admixture events do you observe? Do these make sense based on your knowledge of human history?
 
 Take a look at the length of the branches in the tree. Why are some branches much longer than others? What does the length here represent?
+
+You can also plot the residual fits from each graph. For example, for the graph containing no migrations:
+
+```
+R
+source("scripts/plotting_funcs.R")
+plot_resid("TreeMix/treemix_output_m0", "TreeMix/pop_order.txt")
+```
+
+Take a careful look at these residuals. Which pairs of populations are worst-fitted under each graph?
 
 
 # qpGraph
 
-We can now do a more supervised exploration of our populations' history, using qpGraph...
+We can also do a more supervised exploration of our populations' history, using qpGraph...
 
 ```
 mkdir qpGraph
