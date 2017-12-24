@@ -1,17 +1,16 @@
 
 # Data processing
 
-First, let's convert our pruned plink files to packed eigenstrat format. Use a new parameter file (plink2geno.par), with the following information:
+First, let's convert our pruned plink files to eigenstrat format. Use a new parameter file (plink2geno.par), with the following information:
 
 ```
 genotypename: Data/HumanOriginsPublic2068_reduced_pruned.bed
 snpname: Data/HumanOriginsPublic2068_reduced_pruned.bim
 indivname: Data/HumanOriginsPublic2068_reduced_pruned.fam
-outputformat: PACKEDANCESTRYMAP
+outputformat: EIGENSTRAT
 genotypeoutname: Data/HumanOriginsPublic2068_reduced_pruned.geno
 snpoutname: Data/HumanOriginsPublic2068_reduced_pruned.snp
 indivoutname: Data/HumanOriginsPublic2068_reduced_pruned.ind
-genotype file processed
 ```
 
 Run convertf:
@@ -23,8 +22,8 @@ convertf -p plink2geno.par
 Before we proceed, we need to clean up our ind file:
 
 ```
-paste <(cut -d ":" -f 2 HumanOriginsPublic2068_reduced_pruned.ind | cut -d " "  -f 1) <(cut -d ":" -f 2 HumanOriginsPublic2068_reduced_pruned.ind | cut -d " " -f 2) <(cut -d ":" -f 1  HumanOriginsPublic2068_reduced_pruned.ind | sed 's/ //g') > temp.txt
-mv temp.txt HumanOriginsPublic2068_reduced_pruned.ind
+paste <(cut -d ":" -f 2 Data/HumanOriginsPublic2068_reduced_pruned.ind | cut -d " "  -f 1) <(cut -d ":" -f 2 Data/HumanOriginsPublic2068_reduced_pruned.ind | cut -d " " -f 2) <(cut -d ":" -f 1  Data/HumanOriginsPublic2068_reduced_pruned.ind | sed 's/ //g') > Data/temp.txt
+mv Data/temp.txt Data/HumanOriginsPublic2068_reduced_pruned.ind
 ```
 
 
