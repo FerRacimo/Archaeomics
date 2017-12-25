@@ -66,6 +66,37 @@ qp3Pop -p OutgroupF3.par > OutgroupF3_French.log
 
 Look at the output log file. Which population shares the largest amount of drift with French? Which shares the least amount of drift?
 
+We can also plot the results. We need to extract the lines from the log file that are of interest to us. We'll also select the unnecessary columns at the beginning of each line:
+
+```
+grep 'result:' OutgroupF3_French.log | awk '{print $2, $3, $4, $5, $6, $7, $8, $9}' > OutgroupF3_French.tab
+```
+
+The new tab file should look like this:
+
+```
+French Papuan Ju_hoan_North 0.189703 0.002029 93.515 85837 
+French Sardinian Ju_hoan_North 0.227333 0.002121 107.207 83428 
+French Orcadian Ju_hoan_North 0.229115 0.002104 108.881 82800 
+French Mayan Ju_hoan_North 0.205232 0.002026 101.291 83903 
+French Yoruba Ju_hoan_North 0.113176 0.001534 73.757 96565 
+French Mbuti Ju_hoan_North 0.073210 0.001351 54.173 88065 
+French Karitiana Ju_hoan_North 0.205626 0.002096 98.093 83058 
+French Italian_North Ju_hoan_North 0.227252 0.002095 108.482 83242 
+French Ami Ju_hoan_North 0.197422 0.002055 96.063 84739 
+```
+
+Let's load it into R and create a plot with error bars for each of the F3 values:
+
+```
+library("Hmisc")
+f3tab = read.table("OutgroupF3_French.tab", col.names=c("PopA", "PopB", "PopC", "F3", "SE", "Z", "SNPs"))
+f3ordered = f3tab[order(-f3tab$F3),]
+numrows = dim(f3ordered)[2]
+errbar(1:numrows, f3ordered$F3,(f3ordered$F3+f3ordered$StdErr),(f3ordered$F3-f3ordered$StdErr), pch=20, las=2, cex.axis=0.4, xaxt='n',xlab="population", ylab="F3")
+axis(1, at=1:numrows, labels=f3ordered$PopB, las=2, cex.axis=0.6)
+```
+
 # Admixture F3 statistics
 
 Now, let's hypothesize that French are an admixed group. We'll try to find...
