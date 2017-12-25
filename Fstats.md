@@ -64,6 +64,8 @@ Now run the program qp3Pop, which comes in the AdmixTools package:
 qp3Pop -p OutgroupF3.par > OutgroupF3_French.log
 ```
 
+Look at the output log file. Which population shares the largest amount of drift with French? Which shares the least amount of drift?
+
 # Admixture F3 statistics
 
 Now, let's hypothesize that French are an admixed group. We'll try to find...
