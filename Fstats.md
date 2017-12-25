@@ -79,8 +79,8 @@ library("Hmisc")
 f3tab = read.table("OutgroupF3_French.tab", col.names=c("PopA", "PopB", "PopC", "F3", "SE", "Z", "SNPs"))
 f3ordered = f3tab[order(-f3tab$F3),]
 numrows = dim(f3ordered)[1]
-errbar(1:numrows, f3ordered$F3,(f3ordered$F3+f3ordered$StdErr),(f3ordered$F3-f3ordered$StdErr), pch=20, las=2, cex.axis=0.4, xaxt='n',xlab="population", ylab="F3")
-axis(1, at=1:numrows, labels=f3ordered$PopB, las=2, cex.axis=0.6)
+errbar(1:numrows, f3ordered$F3,(f3ordered$F3+f3ordered$SE),(f3ordered$F3-f3ordered$SE), pch=20, las=2, xaxt='n',xlab="", ylab="F3")
+axis(1, at=1:numrows, labels=f3ordered$PopB, las=2)
 ```
 
 # Admixture F3 statistics
