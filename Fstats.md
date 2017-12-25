@@ -119,18 +119,41 @@ grep 'result:' AdmixtureF3_French.log | awk '{print $2, $3, $4, $5, $6, $7, $8, 
 R
 library("Hmisc")
 f3tab = read.table("AdmixtureF3_French.tab", col.names=c("PopA", "PopB", "Target", "F3", "SE", "Z", "SNPs"))
-pairs = paste(f3tab$PopA,f3tab$PopB,sep=" + ")
 f3ordered = f3tab[order(f3tab$F3),]
+pairs = paste(f3ordered$PopA,f3ordered$PopB,sep=" + ")
 numrows = dim(f3ordered)[1]
 errbar(1:numrows, f3ordered$F3,(f3ordered$F3+f3ordered$SE),(f3ordered$F3-f3ordered$SE), pch=20, las=2, xaxt='n',xlab="", ylab="F3")
-axis(1, at=1:numrows, labels=pairs, las=2,cex.axis=0.3)
+axis(1, at=1:numrows, labels=pairs, las=2,cex.axis=0.4)
 abline(h=0)
 ```
 
 Are any F3 statistics negative? Are they significantly so? (|K| > 3?) Which pairs of populations do these correspond to? What could this mean?
 
-
-
 # D-statistics
 
+Finally, we can further confirm that there's been an admixture event in the past history of the French population by lookin for an excess of ABBA or an excess of BABA sites in a 4-population tree. Let's assume that Ju_hoan_North is a distant outgroup and that the French are a sister clade to Sardinians, possibly with some additional admixture from another group. Let's test two groups as potential sources of this admixture event: Karitiana (a Native South American group) and Yoruba (a Western African group). 
 
+As before, we need to create a population file (Dstats_French.txt), but this time it will have to have quadruplets instead of triplets:
+
+```
+
+```
+
+The parameter file (Dstats.par) should include the following information:
+
+```
+
+```
+
+Now, run the qpDstat program in AdmixTools:
+
+```
+```
+
+Look at the output log file. What could this mean?
+
+To read more about this signal, you can check out the following papers, which suggest that a Northern Eurasian population (which contributed ancestry to Native Americans) admixed with the ancestors of certain European populations, including French. Sardinians have almost none of this admixture, which is why F3(Sardinian,Karitiana,French) is so negative:
+
+http://www.genetics.org/content/192/3/1065
+https://www.nature.com/articles/nature12736/
+https://www.nature.com/articles/nature13673
