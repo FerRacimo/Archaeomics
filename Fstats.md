@@ -149,5 +149,7 @@ Look at the output log file. What could this mean?
 To read more about this signal, you can check out the following papers, which suggest that a Northern Eurasian population (which contributed ancestry to Native Americans) admixed with the ancestors of certain European populations, including French. Sardinians have almost none of this admixture, which is why F3(Sardinian,Karitiana,French) is so negative:
 
 http://www.genetics.org/content/192/3/1065
+
 https://www.nature.com/articles/nature12736/
+
 https://www.nature.com/articles/nature13673
