@@ -29,12 +29,6 @@ mv Data/temp.txt Data/HumanOriginsPublic2068_reduced_pruned.ind
 
 # Outgroup F3 statistics
 
-First, create a folder to place our output files:
-
-```
-mkdir OutgroupF3
-```
-
 We'll begin by computing outgroup F3 statistics to determine which are the populations that share the most drift with French. We'll use Ju_hoan_North - a population from Namibia - as the outgroup. A requirement when computing F3 statistics in AdmixTools is to have a list of population triplets. Copy the following list of triplets to a file and name it OutgroupF3_French.txt. Note that the first column corresponds to our population of interest (French), the second column iterates over a series of populations we'll compare the French to, and the third column is a fixed outgroup, in this case Ju_hoan_North.
 
 ```
