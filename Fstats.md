@@ -85,7 +85,32 @@ axis(1, at=1:numrows, labels=f3ordered$PopB, las=2)
 
 # Admixture F3 statistics
 
-Now, let's hypothesize that French are an admixed group resulting from the mixture of two populations. We'll try to find the pair of populations in our panel that can best stand in for those two populations. For this, we'll resort to using Admixture F3 statistics, in which the population of interest (French) is now placed in the third position of our population file (where Ju_hoan_North was previously when computing Outgroup F3 statistics). The first and second column will be a candidate pair of populations. The more negative the Admixture F3 statistic, the stronger the violation of "tree-ness" relating the 3 populations - an indication of admixture or population structure.
+Now, we'll hypothesize that French are an admixed group resulting from the mixture of two populations. We'll try to find the pair of populations in our panel that can best stand in for those two populations. For this, we'll resort to using Admixture F3 statistics, in which the population of interest (French) is now placed in the third position of our population file (where Ju_hoan_North was previously when computing Outgroup F3 statistics). The first and second column will be a candidate pair of populations. The more negative the Admixture F3 statistic, the stronger the violation of "tree-ness" relating the 3 populations - an indication of admixture or population structure.
+
+We'll use a pre-made R script (scripts/BuildF3List.R) to iterate over all possible pairs of populations that do not include French:
+
+```
+cut -f 3 Data/HumanOriginsPublic2068_reduced_pruned.ind | sort | uniq > allpops.txt
+Rscript scripts/BuildF3List.R allpops.txt French
+```
+
+We now have a new output file called "f3target_French.popfile", which always contains the French in the 3rd column and all other possible pairs of populations in the first and second columns.
+
+Let's prepare a parameter file, this time called AdmxitureF3.par:
+
+```
+genotypename:   Data/HumanOriginsPublic2068_reduced_pruned.geno
+snpname:	Data/HumanOriginsPublic2068_reduced_pruned.snp
+indivname:	Data/HumanOriginsPublic2068_reduced_pruned.ind
+popfilename:    f3target_French.popfile
+```
+
+Finally, run qp3Pop:
+
+```
+qp3Pop -p AdmixtureF3.par > AdmixtureF3_French.log
+```
+
 
 
 
