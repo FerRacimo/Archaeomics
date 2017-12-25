@@ -130,23 +130,30 @@ Finally, we can further confirm that there's been an admixture event in the past
 As before, we need to create a population file (Dstats_French.txt), but this time it will have to have quadruplets instead of triplets:
 
 ```
-
+French  Sardinian       Karitiana       Ju_hoan_North
+French  Sardinian       Yoruba          Ju_hoan_North
 ```
 
 The parameter file (Dstats.par) should include the following information:
 
 ```
-
+genotypename:   Data/HumanOriginsPublic2068_reduced_pruned.geno
+snpname:        Data/HumanOriginsPublic2068_reduced_pruned.snp
+indivname:      Data/HumanOriginsPublic2068_reduced_pruned.ind
+popfilename:    Dstats_French.txt
 ```
 
 Now, run the qpDstat program in AdmixTools:
 
 ```
+qpDstat -p Dstats.par > Dstats_French.log
 ```
 
-Look at the output log file. What could this mean?
+Look at the output log file. The first numerical column corresponds to the value of the D-statistic (defined here as (BABA-ABBA)/(BABA+ABBA)). The second numerical column is the Z-score corresponding to this D-statistic. The 3rd and 4th numerical columns are the BABA and ABBA counts, respectively, and the last column is the total number of SNPs available for analysis.
 
-To read more about this signal, you can check out the following papers, which suggest that a Northern Eurasian population (which contributed ancestry to Native Americans) admixed with the ancestors of certain European populations, including French. Sardinians have almost none of this admixture, which is why F3(Sardinian,Karitiana,French) is so negative:
+Are any of the two statistics significant? In what direction? (i.e. is there an excess of ABBA or BABA patterns, relative to what you would expect under a 4-population tree?). What could this mean?
+
+To read more about this signal, you can check out the following papers, which suggest that a Northern Eurasian population that contributed ancestry to Native Americans also admixed with the ancestors of certain European populations, including French. Sardinians have almost none of this admixture, which is why F3(Sardinian,Karitiana,French) is so negative:
 
 http://www.genetics.org/content/192/3/1065
 
