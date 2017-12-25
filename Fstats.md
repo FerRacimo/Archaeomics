@@ -75,6 +75,7 @@ grep 'result:' OutgroupF3_French.log | awk '{print $2, $3, $4, $5, $6, $7, $8, $
 Let's load it into R and create a plot with error bars for each of the F3 values:
 
 ```
+R
 library("Hmisc")
 f3tab = read.table("OutgroupF3_French.tab", col.names=c("PopA", "PopB", "PopC", "F3", "SE", "Z", "SNPs"))
 f3ordered = f3tab[order(-f3tab$F3),]
@@ -111,6 +112,22 @@ Finally, run qp3Pop:
 qp3Pop -p AdmixtureF3.par > AdmixtureF3_French.log
 ```
 
+As before, let's extract the interesting rows and plot them in R. This time, we'll use pair lables rather than the labels of individual popualtions in the x-axis. We'll also order the populations in increasing order:
+
+```
+grep 'result:' AdmixtureF3_French.log | awk '{print $2, $3, $4, $5, $6, $7, $8, $9}' > AdmixtureF3_French.tab
+R
+library("Hmisc")
+f3tab = read.table("AdmixtureF3_French.tab", col.names=c("PopA", "PopB", "Target", "F3", "SE", "Z", "SNPs"))
+pairs = paste(f3tab$PopA,f3tab$PopB,sep=" + ")
+f3ordered = f3tab[order(f3tab$F3),]
+numrows = dim(f3ordered)[1]
+errbar(1:numrows, f3ordered$F3,(f3ordered$F3+f3ordered$SE),(f3ordered$F3-f3ordered$SE), pch=20, las=2, xaxt='n',xlab="", ylab="F3")
+axis(1, at=1:numrows, labels=pairs, las=2,cex.axis=0.3)
+abline(h=0)
+```
+
+Are any F3 statistics negative? Are they significantly so? (|K| > 3?) Which pairs of populations do these correspond to? What could this mean?
 
 
 
