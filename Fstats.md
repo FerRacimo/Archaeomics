@@ -72,20 +72,6 @@ We can also plot the results. We need to extract the lines from the log file tha
 grep 'result:' OutgroupF3_French.log | awk '{print $2, $3, $4, $5, $6, $7, $8, $9}' > OutgroupF3_French.tab
 ```
 
-The new tab file should look like this:
-
-```
-French Papuan Ju_hoan_North 0.189703 0.002029 93.515 85837 
-French Sardinian Ju_hoan_North 0.227333 0.002121 107.207 83428 
-French Orcadian Ju_hoan_North 0.229115 0.002104 108.881 82800 
-French Mayan Ju_hoan_North 0.205232 0.002026 101.291 83903 
-French Yoruba Ju_hoan_North 0.113176 0.001534 73.757 96565 
-French Mbuti Ju_hoan_North 0.073210 0.001351 54.173 88065 
-French Karitiana Ju_hoan_North 0.205626 0.002096 98.093 83058 
-French Italian_North Ju_hoan_North 0.227252 0.002095 108.482 83242 
-French Ami Ju_hoan_North 0.197422 0.002055 96.063 84739 
-```
-
 Let's load it into R and create a plot with error bars for each of the F3 values:
 
 ```
