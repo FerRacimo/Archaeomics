@@ -16,7 +16,7 @@ Data
 We will use a dataset that includes 50 BAM files of a section of chr2 from human samples (i.e. 10 African, 10 Native American, 10 European, 10 East Asian, and 10 Latino individuals), a reference genome, and putative ancestral sequence.
 
 The data can be found here:
-XXXX
+/mnt/fernando/Course2018/Data_BAMs
 
 Let’s create a shortcut for this directory, as we will refer to it quite a lot in our command lines:
 ```
