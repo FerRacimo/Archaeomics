@@ -20,7 +20,7 @@ XXXX
 
 Let’s create a shortcut for this directory, as we will refer to it quite a lot in our command lines:
 ```
-DATA=XXXX
+DATA=/mnt/fernando/Data_BAMs
 ```
 
 We also have a reference and an ancestral sequence in FASTA format. Let’s also make shortcuts for them:
@@ -33,7 +33,7 @@ Side-note: in case an ancestral sequence is not available, analyses on the SFS a
 
 Throughout the tutorial, we will also use a number of R scripts that can be downloaded from the ngsTools github website. Let’s make a shortcut to them too:
 ```
-SCRIPTS=XXX/Scripts
+SCRIPTS=/mnt/fernando/scripts
 ```
 
 Summary statistics using ANGSD
