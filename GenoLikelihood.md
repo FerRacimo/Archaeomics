@@ -18,7 +18,7 @@ We will use a dataset that includes 50 BAM files of a section of chr2 from human
 The data can be found here:
 XXXX
 
-As before, let’s create a shortcut for this directory, as we will refer to it quite a lot in our command lines:
+Let’s create a shortcut for this directory, as we will refer to it quite a lot in our command lines:
 ```
 DATA=XXXX
 ```
