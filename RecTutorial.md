@@ -22,6 +22,8 @@ present?	(i.e. the	population	had	increased	dramatically	in	size	recently)
 4) And	by	the	same	logic, which	of	the	following	trees	do you	think	are	simulated	under	
 decreasing	population	size,	constant	population	size	and	increasing	population	size?
 
+![alt text](https://github.com/FerRacimo/DemographicCourseAdelaide2018/blob/master/Tree2.png)
+
 # The	connection	between	a	mutation’s	location	on	a	tree	and	the	SFS
 
 1) Which	categories	would	a	Site	Frequency	Spectrum	(SFS)	for	five	gene	copies have?
@@ -29,9 +31,15 @@ decreasing	population	size,	constant	population	size	and	increasing	population	s
 
 2) Which	of	these	categories	would	the	mutation	in	this	tree	(marked	by	a	red	star)	contribute	to:
 
+![alt text](https://github.com/FerRacimo/DemographicCourseAdelaide2018/blob/master/Tree3.png)
+
 3) Which	category	of	the	SFS	would	this	mutation	contribute	to	in	an	SFS:	
 
+![alt text](https://github.com/FerRacimo/DemographicCourseAdelaide2018/blob/master/Tree4.png)
+
 4) Draw	a	SFS	based	on	this	tree:	
+
+![alt text](https://github.com/FerRacimo/DemographicCourseAdelaide2018/blob/master/Tree5.png)
 
 # Effect	of	population	size	changes	on	the	SFS
 Usually	the	number	of	mutations	that	happen on	a	branch	is	proportional	to	the	length	of	the	
