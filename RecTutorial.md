@@ -11,7 +11,7 @@ a	tree	for	five	gene	copies	from	population	of	size	2000? (if	we	drew	them	in	re
 
 2) The	tree	below	is	simulated	assuming	a	constant	population	size:
 
-
+![alt text](https://github.com/FerRacimo/DemographicCourseAdelaide2018/blob/master/Tree1.png)
 
 How	would	the	shape	of	this tree	be	different if	the	population	size	had	not	been	constant, but	
 instead	to	population	size	had	been	10	times	bigger	from the	time	point	indicated	with	^ to the	
