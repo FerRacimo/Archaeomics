@@ -1,5 +1,7 @@
-Exercises in coalescent theory (based on notes by Ida Moltke)
+Exercises in coalescent theory
 ===============
+
+Based on notes by Ida Moltke.
 
 ## Exercise	1A:	Simulating	a	coalescence	tree	assuming	a	constant	population	size
 
