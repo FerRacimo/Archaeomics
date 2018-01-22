@@ -104,6 +104,9 @@ for	instance	for	when	there	are	5	nodes	left	the	mean	coalescent	time	is	2/5(5-1
 
 5) Finally,	imagine	the	following	case:	a	researcher	has	estimated	the	structure	of	a	tree	for	
 mtDNA	from	a	species	sampled	in	a	single	location.	She	obtains	a	tree	looking	as	follows:
+
+![alt text](https://github.com/FerRacimo/DemographicCourseAdelaide2018/blob/master/Tree0.png)
+
 Based	on	the	structure	of	the	tree,	i.e.	two	groups	of	related	individuals	separated	by	long	
 branches	down	to the	root	of	the	tree,	she	concludes	that	there	must	be population	
 subdivision	with	two	clearly	differentiated	groups.	 Based	on	what	you	have	learned	from	
