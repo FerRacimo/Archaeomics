@@ -62,3 +62,49 @@ nodes # print the new list
 ```
 
 If	you	used	R	then	make	sure	you	understand	what	the	R	code	does	before	moving	on.
+
+7. If	you	only	have	one	node	left	in	your	list	of	remaining	nodes	you	are	done.	If	not,	go	back	to	
+step	3.	
+
+In	the	end you	should	have	a	tree,	which	is	a	simulation	of	a	coalescence	tree J Try	to	do	this	a	
+couple times	until	you	feel	like	you	know	how	it	is	done	and	understand	what	is	going	on	(if	you	
+after	a	drawing	a	few	trees still	don’t	understand	then	feel	free	to	ask for	help!)
+
+## Exercise	1B:	Exploring	the	basic	properties	of	a	standard	coalescence tree	
+
+Doing	this	by	hand	is	obviously a	bit	tedious.	So	based	on	the	R	code	snippets	you	already	got	I	
+made	a	function	that	allows	you	to	do	this	automatically	(it	even	makes	a	drawing	of	the	tree).	You	
+can	use	it	by	typing the	following	in	R:
+
+```
+source("/mnt/fernando/Courses2018/simulatecoalescencetrees.R")
+```
+
+Once	you	have	done	this	you can	simulate	and	draw	trees just like	you	just	did	by	hand by	typing:
+
+```
+yourtree <-simtree(5) # simulate tree with 5 nodes
+ct<-read.tree(text=yourtree);plot(ct);add.scale.bar(cex = 0.7,col = "red")# draw tree
+```
+
+And	the	code	also	prints	the	simulated	coalescence	times.	
+Do	this	at	least	10	times	and	based	on	the	results you	get answer	the	following	questions (note	if	
+you	want	to	keep	all	the	results	open	at	the	same	time	then	type	x11()	before	each	simulation):
+
+1) Which	coalescence event takes	the	longest on	average (the	first coalescence event,	the	
+second,	…,	or	the	last)?	And	which	event	takes	the	shortest on	average?
+
+2) Is	that	what	you	would	expect	(the	mean	of	an	exponential	distribution	with rate	r	is	1/r	
+and	the	coalescence rate	when	there	are	x nodes	left	is	x(x-1)/2.	So	the	mean	is	2/x(x-1),	so
+for	instance	for	when	there	are	5	nodes	left	the	mean	coalescent	time	is	2/5(5-1)=0.1)
+
+3) Which	coalescence event	time	seems to	vary	the	most?
+
+4) Is	that	what	you	would	expect	(the	variance	of	an	exponential	is	1/r2)
+
+5) Finally,	imagine	the	following	case:	a	researcher	has	estimated	the	structure	of	a	tree	for	
+mtDNA	from	a	species	sampled	in	a	single	location.	She	obtains	a	tree	looking	as	follows:
+Based	on	the	structure	of	the	tree,	i.e.	two	groups	of	related	individuals	separated	by	long	
+branches	down	to the	root	of	the	tree,	she	concludes	that	there	must	be population	
+subdivision	with	two	clearly	differentiated	groups.	 Based	on	what	you	have	learned	from	
+the	simulations,	do	you	agree	with	this	conclusion?
