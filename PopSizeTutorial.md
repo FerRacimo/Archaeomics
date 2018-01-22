@@ -1,4 +1,4 @@
-Tutorial based on notes by Mikkel Schierup and Ida Moltke
+Based on notes by Ida Moltke
 
 # Effect	of	population	size	on	coalescence	trees
 
