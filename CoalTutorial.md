@@ -36,7 +36,6 @@ to	nodecount*(nodecount-1)/2	where	nodecount	is	the	number	of	nodes	in	your node
 this	in	R	by	typing:
 
 ```
-nodecount = length(nodes) # save the number of nodes in the variable nodecount
 coalescencerate = nodecount*(nodecount-1)/2 # calculate the coalescent rate
 coalescencetime = rexp(1, rate=coalescencerate) # sample from exponential w. that rate
 coalescencetime
