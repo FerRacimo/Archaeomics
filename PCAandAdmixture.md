@@ -146,4 +146,4 @@ We can also look at the cross-validation errors:
 grep -h CV log*.out
 ```
 
-Plot these values in R. Have they reached a minimum? If so, at which value of K? What does this mean?
+If you have experience with R, try to plot these values (otherwise work with a partner who does). Have they reached a minimum? If so, at which value of K? What does this mean?
