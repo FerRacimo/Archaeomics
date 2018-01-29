@@ -1,7 +1,7 @@
 Exercises using PCA and Admixture
 ===============
 
-In this tutorial we will be using a SNP capture dataset produced by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomes from both ancient and present-day populations.
+In this tutorial we will be using a SNP capture dataset produced by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomic data from both ancient and present-day populations.
 
 We'll begin by downloading the genotype data file (check with Yassine if this has already been downloaded to a common folder):
 
