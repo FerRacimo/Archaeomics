@@ -201,40 +201,6 @@ realSFS -P 4 AFR.saf.idx EUR.saf.idx LAT.saf.idx 2> /dev/null > AFR.EUR.LAT.sfs
 
 Side-note: when performing demographic inference, estimating the SFS from the sample is one of the first steps in the analyses. Afterwards, one may want to run downstream programs (like dadi or fastsimcoal2) that attempt to infer the best demographic model that can be fitted to the SFS.
 
-%test
-## Nucleotide diversity
-
-%You may be interested in assessing levels of nucleotide diversity within a particular population. We can achieve this using ANGSD by estimating levels of diversity without relying on called genotypes. The SFS is used as a prior to compute allele frequencies probabilities. From these quantities, expectations of various diversity indexes are computed. This can be achieved using the following pipeline, assuming we are computing such indexes for all populations (but separately).
-
-First we compute the allele frequency posterior probabilities and associated statistics (-doThetas) using the SFS as prior information (-pest)
-```
-for POP in AFR EUR LAT EAS NAM
-do
-	echo $POP
-	angsd -P 4 -b $DATA/$POP.bams -ref $REF -anc $ANC -out $POP \
-                -uniqueOnly 1 -remove_bads 1 -only_proper_pairs 1 -trim 0 -C 50 -baq 1 \
-                -minMapQ 20 -minQ 20 -minInd 10 -setMinDepth 20 -setMaxDepth 200 -doCounts 1 \
-                -GL 1 -doSaf 1 -doThetas 1 -pest $POP.sfs &> /dev/null
-done
-```
-
-Then we are going to index these files and perform a sliding windows analysis using a window length of 50kbp and a step size of 10kbp.
-```
-for POP in AFR EUR LAT EAS NAM
-do
-	echo $POP
-	# perform a sliding-window analysis
-	thetaStat do_stat $POP.thetas.idx -win 50000 -step 10000 -outnames $POP.thetas
-done
-```
-Values in this output file are the sum of the per-site estimates for the whole window.
-
-For instance:
-```
-less -S LAT.thetas.pestPG
-```
-
-The .pestPG file is a 14 column file (tab-separated). The first column contains information about the region. The second and third column are the reference name and the center of the window. We then have 5 different estimators of theta, these are: Watterson's estimator, Tajima's estimator (pi), Fu&Li's estimator, Fay's H and L. And then we have 5 different neutrality test statistics: Tajima's D, Fu&Li's F, Fu&Li's D, Fay's H and Zeng's E. The final column is the effetive number of sites with data in the window.
 
 ## Estimating per-SNP allele frequencies from low-coverage data
 
