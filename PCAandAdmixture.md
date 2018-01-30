@@ -133,7 +133,7 @@ We can visualize the admixture components of each individual using a barplot in 
 ```
 R
 K=3
-tbl <- read.table(paste("Admixture/HumanOriginsPublic2068_reduced_pruned.",K,.Q",sep=""),header=FALSE)
+tbl <- read.table(paste("Admixture/HumanOriginsPublic2068_reduced_pruned.",K,".Q",sep=""),header=FALSE)
 inds <- read.table("Data/HumanOriginsPublic2068_reduced_pruned.fam",header=FALSE) 
 barplot(t(as.matrix(tbl)), col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.3,names=inds[,1])
 ```
