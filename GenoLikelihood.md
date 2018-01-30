@@ -201,9 +201,10 @@ realSFS -P 4 AFR.saf.idx EUR.saf.idx LAT.saf.idx 2> /dev/null > AFR.EUR.LAT.sfs
 
 Side-note: when performing demographic inference, estimating the SFS from the sample is one of the first steps in the analyses. Afterwards, one may want to run downstream programs (like dadi or fastsimcoal2) that attempt to infer the best demographic model that can be fitted to the SFS.
 
+%test
 ## Nucleotide diversity
 
-You may be interested in assessing levels of nucleotide diversity within a particular population. We can achieve this using ANGSD by estimating levels of diversity without relying on called genotypes. The SFS is used as a prior to compute allele frequencies probabilities. From these quantities, expectations of various diversity indexes are computed. This can be achieved using the following pipeline, assuming we are computing such indexes for all populations (but separately).
+%You may be interested in assessing levels of nucleotide diversity within a particular population. We can achieve this using ANGSD by estimating levels of diversity without relying on called genotypes. The SFS is used as a prior to compute allele frequencies probabilities. From these quantities, expectations of various diversity indexes are computed. This can be achieved using the following pipeline, assuming we are computing such indexes for all populations (but separately).
 
 First we compute the allele frequency posterior probabilities and associated statistics (-doThetas) using the SFS as prior information (-pest)
 ```
