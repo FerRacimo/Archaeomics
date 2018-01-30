@@ -142,6 +142,7 @@ Note that there are visualization programs better suited for exploring results f
 
 We can also look at the cross-validation errors:
 
+
 ```
 grep -h CV log*.out
 ```
