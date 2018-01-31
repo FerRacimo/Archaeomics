@@ -65,10 +65,9 @@ mkdir qpGraph
 We need to create a parameter file (graphpar.par) first:
 
 ```
-DIR:    Data
-indivname:       HumanOriginsPublic2068_reduced_pruned.ind
-snpname:         HumanOriginsPublic2068_reduced_pruned.snp
-genotypename:    HumanOriginsPublic2068_reduced_pruned.geno
+indivname:       Data/HumanOriginsPublic2068_reduced_pruned.ind
+snpname:         Data/HumanOriginsPublic2068_reduced_pruned.snp
+genotypename:    Data/HumanOriginsPublic2068_reduced_pruned.geno
 outpop:         NULL
 blgsize:        0.05
 lsqmode:       YES
