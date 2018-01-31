@@ -128,10 +128,10 @@ Yor        Fre        Sar        Kar       0.000001    -0.022276    -0.022278   
 
 corresponds to F4(Yoruba,French,Sardinian,Karitian). Under our model, this F4 statistic is equal to 0, but when measured on our raw data this value is negative (=-0.022276). The difference between the fitted F4 and the observed F4 is equal to -0.022278, the standard error  is 0.000690 and the Z-score for this difference is very large (=-32.266). The fact that our observed statistic is more negative than our fitted statistic means that the ABBA pattern should be stronger than the BABA pattern. We could try improving this fit by rearranging our graph to somehow make French and Sardinian closer to each other (relative to Yoruba and Karitiana), or making Yoruba and Karitiana closer to each other (relative to French and Sardinian). Given our prior knowledge of human history and our fitted TreeMix graphs, it may perhaps be more advisable to make French and Sardinian closer to each other...
 
-To visualize the fitted graph, we first convert our outputted dot file to postscript, and then convert it to pdf using:
+To visualize the fitted graph, we first convert our outputted dot file to postscript, and then convert it to png using:
 
 ```
-dot -Tpng graph1.dot > graph1.ps
+dot -Tpng graph1.dot > graph1.png
 ...
 ```
 
