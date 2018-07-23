@@ -1,1 +1,1 @@
-# Demographic Course Adelaide 2018
+# Archaeomics course 2018
