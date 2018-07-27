@@ -1,16 +1,22 @@
 Exercises using PCA and Admixture
 ===============
 
-In this tutorial we will be using a SNP capture dataset produced by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomic data from both ancient and present-day populations.
+In this tutorial we will be using a SNP capture dataset produced by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomic data from both ancient and present-day populations from around the world.
 
-We'll begin by downloading the genotype data file:
+The data files can be found here:
 
 ```
-wget https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/NearEastPublic.tar.gz
-tar xvzf NearEastPublic.tar.gz
+/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData
 ```
 
-Let's create a folder where we'll dump all our intermediate data files:
+Let's create a shortcut to this folder, so that we can easily reference it when working from our own personal folders:
+
+```
+HUMOR=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData
+``
+
+
+Now go to your personal folder and create a folder inside it, where we'll dump all our intermediate data files:
 
 ```
 mkdir Data
@@ -22,16 +28,16 @@ mkdir Data
 Before we can start our analysis, we'll need to clean our data for downstream analyses. We only want to work with autosomal SNPs, so we'll first make a record of the SNPs that are located in chrX and chrY, so we can get rid of them later.
 
 ```
-cat NearEastPublic/HumanOriginsPublic2068.snp | tr -s " " | awk 'BEGIN{OFS="\t"}{if ($2 == "23" || $2 == "24") print}' > Data/toremove.snp
+cat $HUMOR/HumanOriginsPublic2068.snp | tr -s " " | awk 'BEGIN{OFS="\t"}{if ($2 == "23" || $2 == "24") print}' > Data/toremove.snp
 ```
 
 Now, let's convert the genotype file from "packed eigenstrat" format to packed ped format. We'll need to define a parameter file for convertf, which we'll call geno2plink.par. Open your favorite text editor and write down the following lines:
 
 
 ```
-genotypename:   NearEastPublic/HumanOriginsPublic2068.geno
-snpname:        NearEastPublic/HumanOriginsPublic2068.snp
-indivname:      NearEastPublic/HumanOriginsPublic2068.ind
+genotypename:   /science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData/HumanOriginsPublic2068.geno
+snpname:        /science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData/HumanOriginsPublic2068.snp
+indivname:      /science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData/HumanOriginsPublic2068.ind
 outputformat:    PACKEDPED
 genotypeoutname: Data/HumanOriginsPublic2068.bed
 snpoutname:      Data/HumanOriginsPublic2068.bim
@@ -48,7 +54,7 @@ convertf -p geno2plink.par
 We now need to fix the *fam file to remove unwanted spaces:
 
 ```
-paste <(cat NearEastPublic/HumanOriginsPublic2068.ind | awk '{print $3}') <( cat Data/HumanOriginsPublic2068.fam | awk 'BEGIN{OFS="\t"}{print $2,$3,$4,$5,$6}') > temp.fam
+paste <(cat $HUMOR/HumanOriginsPublic2068.ind | awk '{print $3}') <( cat Data/HumanOriginsPublic2068.fam | awk 'BEGIN{OFS="\t"}{print $2,$3,$4,$5,$6}') > temp.fam
 mv temp.fam Data/HumanOriginsPublic2068.fam
 ```
 
