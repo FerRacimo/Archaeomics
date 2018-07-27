@@ -13,7 +13,7 @@ Let's create a shortcut to this folder, so that we can easily reference it when 
 
 ```
 HUMOR=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData
-``
+```
 
 
 Now go to your personal folder and create a folder inside it, where we'll dump all our intermediate data files:
