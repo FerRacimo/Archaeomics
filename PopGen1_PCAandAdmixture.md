@@ -153,7 +153,7 @@ We can visualize the admixture components of each individual using a barplot in 
 
 ```
 R
-K=3
+K=5
 Admdir <- [YOUR ADMIXTURE DIRECTORY HERE]
 Datadir <- [YOUR DATA DIRECTORY HERE ] 
 tbl <- read.table(paste(Admdir,"/AncientModern_reduced_pruned.",K,".Q",sep=""),header=FALSE)
@@ -161,6 +161,12 @@ inds <- read.table(paste(Datadir,"/AncientModern_reduced_pruned.fam",sep=""),hea
 barplot(t(as.matrix(tbl)), col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.3,names=inds[,1])
 ```
 
+There are a lot of individuals here. We can also try plotting just a subset of them (say, from the 150th to the 250th):
+
+```
+indstoplot <- seq(150,250)
+barplot(t(as.matrix(tbl))[,indstoplot], col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.8,names=inds[indstoplot,1])
+```
 
 Note that there are visualization programs better suited for exploring results from Admixture and other programs based on the Structure algorithms. One that is very useful and practical to use is Pong: https://github.com/ramachandran-lab/pong
 
