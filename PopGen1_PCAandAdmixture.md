@@ -155,8 +155,9 @@ We can visualize the admixture components of each individual using a barplot in 
 R
 K=3
 Admdir <- [YOUR ADMIXTURE DIRECTORY HERE]
+Datadir <- [YOUR DATA DIRECTORY HERE ] 
 tbl <- read.table(paste(Admdir,"/AncientModern_reduced_pruned.",K,".Q",sep=""),header=FALSE)
-inds <- read.table(paste(Admdir,"/AncientModern_reduced_pruned.fam",sep=""),header=FALSE) 
+inds <- read.table(paste(Datadir,"/AncientModern_reduced_pruned.fam",sep=""),header=FALSE) 
 barplot(t(as.matrix(tbl)), col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.3,names=inds[,1])
 ```
 
