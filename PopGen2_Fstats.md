@@ -4,13 +4,13 @@
 First, let's convert our pruned plink files to eigenstrat format. Use a new parameter file (plink2geno.par), with the following information:
 
 ```
-genotypename: Data/HumanOriginsPublic2068_reduced_pruned.bed
-snpname: Data/HumanOriginsPublic2068_reduced_pruned.bim
-indivname: Data/HumanOriginsPublic2068_reduced_pruned.fam
+genotypename: Data/AncientModern_reduced_pruned.bed
+snpname: Data/AncientModern_reduced_pruned.bim
+indivname: Data/AncientModern_reduced_pruned.fam
 outputformat: EIGENSTRAT
-genotypeoutname: Data/HumanOriginsPublic2068_reduced_pruned.geno
-snpoutname: Data/HumanOriginsPublic2068_reduced_pruned.snp
-indivoutname: Data/HumanOriginsPublic2068_reduced_pruned.ind
+genotypeoutname: Data/AncientModern_reduced_pruned.geno
+snpoutname: Data/AncientModern_reduced_pruned.snp
+indivoutname: Data/AncientModern_reduced_pruned.ind
 ```
 
 Run convertf:
@@ -22,8 +22,8 @@ convertf -p plink2geno.par
 Before we proceed, we need to clean up our ind file:
 
 ```
-paste <(cut -d ":" -f 2 Data/HumanOriginsPublic2068_reduced_pruned.ind | cut -d " "  -f 1) <(cut -d ":" -f 2 Data/HumanOriginsPublic2068_reduced_pruned.ind | cut -d " " -f 2) <(cut -d ":" -f 1  Data/HumanOriginsPublic2068_reduced_pruned.ind | sed 's/ //g') > Data/temp.txt
-mv Data/temp.txt Data/HumanOriginsPublic2068_reduced_pruned.ind
+paste <(cut -d ":" -f 2 $DATA/AncientModern_reduced_pruned.ind | cut -d " "  -f 1) <(cut -d ":" -f 2 $DATA/AncientModern_reduced_pruned.ind | cut -d " " -f 2) <(cut -d ":" -f 1  $DATA/AncientModern_reduced_pruned.ind | sed 's/ //g') > $DATA/temp.txt
+mv $DATA/temp.txt $DATA/AncientModern_reduced_pruned.ind
 ```
 
 
