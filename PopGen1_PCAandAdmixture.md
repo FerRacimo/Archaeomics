@@ -50,7 +50,7 @@ indivoutname:    DATA/AncientModern.fam
 badsnpname:      DATA/toremove.snp
 ```
 
-Now, run convertf:
+Save the file and name it 'geno2plink.par'. Now, run convertf:
 
 ```
 convertf -p geno2plink.par
