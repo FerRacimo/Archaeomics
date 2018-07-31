@@ -12,7 +12,7 @@ The data files can be found here:
 Let's create a shortcut to this folder, so that we can easily reference it when working from our own personal folders. We'll also create an alias for certain programs that we will use  below.
 
 ```
-HUMOR=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData
+HUMOR=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/Day3_data/HumanOriginsData
 alias plink='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/plink1.9/plink'
 alias smartpca='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/smartpca'
 alias convertf='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/convertf'
@@ -21,11 +21,7 @@ alias adimxture='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/admixture_l
 ```
 
 
-Now go to your personal folder and create a folder inside it, where we'll dump all our intermediate data files:
-
-```
-mkdir Data
-```
+Now create a shortcut to your own data folder, and call that shortcut DATA. Thus, you will be easily able to dump all your intermediate data files. Type 'echo $DATA' to make sure you've created the shortcut successfully.
 
 
 # Data processing
@@ -33,21 +29,25 @@ mkdir Data
 Before we can start our analysis, we'll need to clean our data for downstream analyses. We only want to work with autosomal SNPs, so we'll first make a record of the SNPs that are located in chrX and chrY, so we can get rid of them later.
 
 ```
-cat $HUMOR/HumanOriginsPublic2068.snp | tr -s " " | awk 'BEGIN{OFS="\t"}{if ($2 == "23" || $2 == "24") print}' > Data/toremove.snp
+cat $HUMOR/AncientModern.snp | tr -s " " | awk 'BEGIN{OFS="\t"}{if ($2 == "23" || $2 == "24") print}' > $DATA/toremove.snp
 ```
 
-Now, let's convert the genotype file from "packed eigenstrat" format to packed ped format. We'll need to define a parameter file for convertf, which we'll call geno2plink.par. Open your favorite text editor and write down the following lines:
+Now, let's convert the genotype file from "packed eigenstrat" format to "packed ped format. We'll need to define a parameter file for convertf, which we'll call geno2plink.par. Open your favorite text editor and write down the following lines
+
+IMPORTANT: you need to replace the DATA line for whichever Data folder you're working in!
 
 
 ```
-genotypename:   /science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData/HumanOriginsPublic2068.geno
-snpname:        /science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData/HumanOriginsPublic2068.snp
-indivname:      /science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData/HumanOriginsPublic2068.ind
+HUMOR: /science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/Day3_data/HumanOriginsData 
+DATA: [ YOUR DATA FOLDER HERE ]
+genotypename:   HUMOR/AncientModern.geno
+snpname:        HUMOR/AncientModern.snp
+indivname:      HUMOR/AncientModern.ind
 outputformat:    PACKEDPED
-genotypeoutname: Data/HumanOriginsPublic2068.bed
-snpoutname:      Data/HumanOriginsPublic2068.bim
-indivoutname:    Data/HumanOriginsPublic2068.fam
-badsnpname:      Data/toremove.snp
+genotypeoutname: DATA/AncientModern.bed
+snpoutname:      DATA/AncientModern.bim
+indivoutname:    DATA/AncientModern.fam
+badsnpname:      DATA/toremove.snp
 ```
 
 Now, run convertf:
@@ -59,15 +59,15 @@ convertf -p geno2plink.par
 We now need to fix the *fam file to remove unwanted spaces:
 
 ```
-paste <(cat $HUMOR/HumanOriginsPublic2068.ind | awk '{print $3}') <( cat Data/HumanOriginsPublic2068.fam | awk 'BEGIN{OFS="\t"}{print $2,$3,$4,$5,$6}') > temp.fam
-mv temp.fam Data/HumanOriginsPublic2068.fam
+paste <(cat $HUMOR/AncientModern.ind | awk '{print $3}') <( cat $DATA/AncientModern.fam | awk 'BEGIN{OFS="\t"}{print $2,$3,$4,$5,$6}') > temp.fam
+mv temp.fam $DATA/AncientModern.fam
 ```
 
 Now, we'll make a list of populations ("plink families") to focus on for donwstream analyses, and extract them from the plink file:
 
 ```
-echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\tHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana" > Data/groups_to_keep.txt
-plink --bfile Data/HumanOriginsPublic2068 --keep-fam Data/groups_to_keep.txt --make-bed --out Data/HumanOriginsPublic2068_reduced
+echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\tHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana" > $DATA/groups_to_keep.txt
+plink --bfile $DATA/AncientModern --keep-fam $DATA/groups_to_keep.txt --make-bed --out $DATA/AncientModern_reduced
 ```
 
 # LD pruning
