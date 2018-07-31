@@ -63,10 +63,10 @@ paste <(cat $HUMOR/AncientModern.ind | awk '{print $3}') <( cat $DATA/AncientMod
 mv temp.fam $DATA/AncientModern.fam
 ```
 
-Now, we'll make a list of populations ("plink families") to focus on for donwstream analyses, and extract them from the plink file:
+Now, we'll make a list of populations ("plink families") to focus on for donwstream analyses, and extract them from the plink file. We'll extract a subset of modern and ancient populations:
 
 ```
-echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\tHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana" > $DATA/groups_to_keep.txt
+echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\tHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana\nEurope_LNBA\nSteppe_EMBA" > $DATA/groups_to_keep.txt
 plink --bfile $DATA/AncientModern --keep-fam $DATA/groups_to_keep.txt --make-bed --out $DATA/AncientModern_reduced
 ```
 
