@@ -149,7 +149,7 @@ cd ..
 
 Look at the output files in the Admixture folder. Based on today's lecture, what do you think each of these represent?
 
-We can visualize the admixture components of each individual using a barplot in R. For example, for K=3, we can type the following in R (make sure the directory name is correct):
+We can visualize the admixture components of each individual using a barplot in R. For example, for K=5, we can type the following in R (make sure the directory name is correct):
 
 ```
 R
@@ -168,7 +168,7 @@ indstoplot <- seq(150,250)
 barplot(t(as.matrix(tbl))[,indstoplot], col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.8,names=inds[indstoplot,1])
 ```
 
-Note that there are visualization programs better suited for exploring results from Admixture and other programs based on the Structure algorithms. One that is very useful and practical to use is Pong: https://github.com/ramachandran-lab/pong
+Note that there are visualization programs better suited for exploring results from Admixture and other programs based on the Structure algorithms. One that is very useful and practical to use is Pong: https://github.com/ramachandran-lab/pong An R package that can also help with visualization of Admixture results is pophelper: https://github.com/royfrancis/pophelper
 
 We can also look at the cross-validation errors:
 
