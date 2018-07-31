@@ -109,7 +109,7 @@ smartpca -p pca.par
 To visualize the first 2 principal components from the PCA, we'll use an R script:
 
 ```
-Rscript plotPCA.R -a $PCA/eigenvalues.txt -e $PCA/eigenvectors.txt -c 1-2 -f $DATA/AncientModern_reduced_pruned.fam -o $PCA/PCA_World.pdf
+Rscript $SCRIPT/plotPCA.R -a $PCA/eigenvalues.txt -e $PCA/eigenvectors.txt -c 1-2 -f $DATA/AncientModern_reduced_pruned.fam -o $PCA/PCA_World.pdf
 xpdf $PCA/PCA_World.pdf
 ```
 
