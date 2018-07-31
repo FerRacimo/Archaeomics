@@ -115,7 +115,7 @@ xpdf $PCA/PCA_World.pdf
 
 Which groups are separated along the first component of variation? Which groups are separated along the second component? Why do you think this is?
 
-Look at the file containing the eigenvalues. The value of a particular eigenvalue divided by the total sum of all eigenvalues is the proportion of variance explained by its corresponding eigenvector (principal component). Load the eigenvalue table into R, and calculate how much variance in the data is captured by the first, second and thrid principal components.
+Look at the file containing the eigenvalues. The value of a particular eigenvalue divided by the total sum of all eigenvalues is the proportion of variance explained by its corresponding eigenvector (principal component). Load the eigenvalue table into R, and calculate how much variance in the data is captured by the first, second, third and fourth principal components.
 
 # Admixture analysis
 
