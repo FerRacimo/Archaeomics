@@ -91,13 +91,11 @@ Now create a directory called 'PCA' and also create a shortcut for it called PCA
 Let's create a parameter file for PCA (called pca.par), using your favorite text editor. IMPORTANT: make sure your directory names are correctly written!
 
 ```
-PCA:  [ YOUR PCA DIRECTORY NAME HERE ]
-DATA: [ YOUR DATA DIRECTORY NAME HERE ]
-genotypename: DATA/AncientModern_reduced_pruned.bed
-snpname:      DATA/AncientModern_reduced_pruned.bim
-indivname:    DATA/AncientModern_reduced_pruned.fam
-evecoutname:  PCA/eigenvectors.txt
-evaloutname:  PCA/eigenvalues.txt
+genotypename: [ YOUR DATA DIRECTORY NAME HERE ]/AncientModern_reduced_pruned.bed
+snpname:      [ YOUR DATA DIRECTORY NAME HERE ]/AncientModern_reduced_pruned.bim
+indivname:    [ YOUR DATA DIRECTORY NAME HERE ]/AncientModern_reduced_pruned.fam
+evecoutname:  [ YOUR PCA DIRECTORY NAME HERE ]/eigenvectors.txt
+evaloutname:  [ YOUR PCA DIRECTORY NAME HERE ]/eigenvalues.txt
 numoutlieriter: 0
 ```
 
