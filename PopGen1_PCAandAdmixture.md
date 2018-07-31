@@ -67,7 +67,7 @@ mv temp.fam $DATA/AncientModern.fam
 Now, we'll make a list of populations ("plink families") to focus on for donwstream analyses, and extract them from the plink file. We'll extract a subset of modern and ancient populations:
 
 ```
-echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\tHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana\nEurope_LNBA\nSteppe_EMBA" > $DATA/groups_to_keep.txt
+echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\nHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana\nEurope_LNBA\nSteppe_EMBA" > $DATA/groups_to_keep.txt
 plink --bfile $DATA/AncientModern --keep-fam $DATA/groups_to_keep.txt --make-bed --out $DATA/AncientModern_reduced
 ```
 
@@ -78,7 +78,6 @@ When computing a PCA or performing an Admixture analysis, large datasets take a 
 ```
 plink --bfile $DATA/AncientModern_reduced --indep-pairwise 50 10 0.1
 plink --bfile $DATA/AncientModern_reduced --extract plink.prune.in --make-bed --out $DATA/AncientModern_reduced_pruned
-
 ```
 
 The first command makes a list of SNPs that will be targeted for removal. These are SNPs with an r^2 value greater than 0.1 with any other SNP within a 50-SNP sliding window (with a 10-SNP overlap between windows). The second command performs the pruning.
@@ -98,9 +97,17 @@ indivname:    [ YOUR DATA DIRECTORY NAME HERE ]/AncientModern_reduced_pruned.fam
 evecoutname:  [ YOUR PCA DIRECTORY NAME HERE ]/eigenvectors.txt
 evaloutname:  [ YOUR PCA DIRECTORY NAME HERE ]/eigenvalues.txt
 numoutlieriter: 0
+poplistname:  [YOUR PCA DIRECTORY NAME HERE]/pca_populations.txt
+lsqproject: YES
 ```
 
-Save this to a file called pca.par. We can now run our PCA analysis using the smartpca program from eigensoft:
+Save this to a file called pca.par. The last two lines of this file server to ensure that the principal components will only be computed with the populations listed in the file "pca_populations.txt". As ancient DNA tends to be of lower quality and have more missing data than modern DNA, researchers traditionally calculate the principal components using modern genomes only, and then "project" the ancient genomes onto the modern PCA. Let's create the pca_popualtions.txt file:
+
+ ```
+ echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\nHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana" > $PCA/pca_populations.txt
+ ```
+
+We can now run our PCA analysis using the smartpca program from eigensoft:
 
 ```
 smartpca -p pca.par
