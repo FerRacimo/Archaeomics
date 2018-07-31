@@ -16,6 +16,7 @@ HUMOR=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/Day3_data/HumanOriginsData
 alias plink='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/plink1.9/plink'
 alias smartpca='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/smartpca'
 alias convertf='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/convertf'
+alias mergeit='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/mergeit'
 alias adimxture='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/admixture_linux-1.3.0/admixture'
 ```
 
