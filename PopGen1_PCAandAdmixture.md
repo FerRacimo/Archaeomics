@@ -137,13 +137,14 @@ cd ..
 
 Look at the output files in the Admixture folder. Based on today's lecture, what do you think each of these represent?
 
-We can visualize the admixture components of each individual using a barplot in R. For example, for K=3, we can type the following in R (make sure the directory names are correct):
+We can visualize the admixture components of each individual using a barplot in R. For example, for K=3, we can type the following in R (make sure the directory name is correct):
 
 ```
 R
 K=3
-tbl <- read.table(paste("Admixture/AncientModern_reduced_pruned.",K,".Q",sep=""),header=FALSE)
-inds <- read.table("Data/AncientModern_reduced_pruned.fam",header=FALSE) 
+Datadir <- [YOUR DATA DIRECTORY HERE]
+tbl <- read.table(paste(Datadir,"/AncientModern_reduced_pruned.",K,".Q",sep=""),header=FALSE)
+inds <- read.table(paste(Datadir,"/AncientModern_reduced_pruned.fam",sep=""),header=FALSE) 
 barplot(t(as.matrix(tbl)), col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.3,names=inds[,1])
 ```
 
