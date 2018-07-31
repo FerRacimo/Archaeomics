@@ -1,7 +1,7 @@
 Exercises using PCA and Admixture
 ===============
 
-In this tutorial we will be using a SNP capture dataset produced by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomic data from both ancient and present-day populations from around the world.
+In this tutorial we will be using a combination of whole-genome and SNP capture datasets assembled by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomic data from both ancient and present-day populations from around the world.
 
 The data files can be found here:
 
@@ -109,7 +109,7 @@ smartpca -p pca.par
 To visualize the first 2 principal components from the PCA, we'll use an R script:
 
 ```
-Rscript $SCRIPT/plotPCA.R -a $PCA/eigenvalues.txt -e $PCA/eigenvectors.txt -c 1-2 -f $DATA/AncientModern_reduced_pruned.fam -o $PCA/PCA_World.pdf
+Rscript $SCRIPTS/plotPCA.R -a $PCA/eigenvalues.txt -e $PCA/eigenvectors.txt -c 1-2 -f $DATA/AncientModern_reduced_pruned.fam -o $PCA/PCA_World.pdf
 xpdf $PCA/PCA_World.pdf
 ```
 
