@@ -75,34 +75,33 @@ plink --bfile $DATA/AncientModern --keep-fam $DATA/groups_to_keep.txt --make-bed
 When computing a PCA or performing an Admixture analysis, large datasets take a long time to analyze. However, a lot of SNPs actually have redundant information, as they may sit on the same haplotype and be in strong linkage disequilibrium with each other. We can "thin" our data to remove SNPs based on their LD correlation coefficients, using plink, keeping (almost) the same amount of SNP data while significantly reducing the computational burden of our downstream algorithms. We can use the following commands to prune our data:
 
 ```
-plink --bfile Data/HumanOriginsPublic2068_reduced --indep-pairwise 50 10 0.1
-plink --bfile Data/HumanOriginsPublic2068_reduced --extract plink.prune.in --make-bed --out Data/HumanOriginsPublic2068_reduced_pruned
+plink --bfile $DATA/HumanOriginsPublic2068_reduced --indep-pairwise 50 10 0.1
+plink --bfile $DATA/HumanOriginsPublic2068_reduced --extract plink.prune.in --make-bed --out $DATA/HumanOriginsPublic2068_reduced_pruned
 
 ```
 
 The first command makes a list of SNPs that will be targeted for removal. These are SNPs with an r^2 value greater than 0.1 with any other SNP within a 50-SNP sliding window (with a 10-SNP overlap between windows). The second command performs the pruning.
 
-Compare the number of SNPs in the Data/HumanOriginsPublic2068_reduced.bim file and the Data/HumanOriginsPublic2068_reduced_pruned.bim file. How many SNPs did we remove? How many did we keep?
+Compare the number of SNPs in the $DATA/HumanOriginsPublic2068_reduced.bim file and the $DATA/HumanOriginsPublic2068_reduced_pruned.bim file. How many SNPs did we remove? How many did we keep?
 
 # PCA
 
-Let's create a directory for our PCA results:
-```
-mkdir PCA
-```
+Now create a directory called 'PCA' and also create a shortcut for it called PCA.
 
-Now, create a parameter file for PCA (called pca.par), using your favorite text editor:
+Let's create a parameter file for PCA (called pca.par), using your favorite text editor. IMPORTANT: make sure your directory names are correctly written!
 
 ```
-genotypename: Data/HumanOriginsPublic2068_reduced_pruned.bed
-snpname:      Data/HumanOriginsPublic2068_reduced_pruned.bim
-indivname:    Data/HumanOriginsPublic2068_reduced_pruned.fam
+PCA:  [ YOUR PCA DIRECTORY NAME HERE ]
+DATA: [ YOUR DATA DIRECTORY NAME HERE ]
+genotypename: Data/AncientModern_reduced_pruned.bed
+snpname:      Data/AncientModern_reduced_pruned.bim
+indivname:    Data/AncientModern_reduced_pruned.fam
 evecoutname:  PCA/eigenvectors.txt
 evaloutname:  PCA/eigenvalues.txt
 numoutlieriter: 0
 ```
 
-We can now run our PCA analysis using the smartpca program from eigensoft:
+Save this to a file called pca.par. We can now run our PCA analysis using the smartpca program from eigensoft:
 
 ```
 smartpca -p pca.par
@@ -111,8 +110,8 @@ smartpca -p pca.par
 To visualize the first 2 principal components from the PCA, we'll use an R script:
 
 ```
-Rscript scripts/PlotPCA.R PCA/eigenvectors.txt Data/HumanOriginsPublic2068_reduced_pruned.fam PCA/PCA_World.pdf
-xpdf PCA/PCA_World.pdf
+Rscript scripts/PlotPCA.R $PCA/eigenvectors.txt $DATA/AncientModern_reduced_pruned.fam $PCA/PCA_World.pdf
+xpdf $PCA/PCA_World.pdf
 ```
 
 Which groups are separated along the first component of variation? Which groups are separated along the second component? Why do you think this is?
@@ -132,22 +131,23 @@ Now, we'll run the Admixture program with K=1, K=2, K=3 and K=4 and K=5 ancestra
 ```
 cd Admixture
 for K in {1..5}; do
-admixture --cv ../Data/HumanOriginsPublic2068_reduced_pruned.bed $K  | tee log_${K}.out
+admixture --cv $DATA/AncientModern_reduced_pruned.bed $K  | tee log_${K}.out
 done
 cd ..
 ```
 
 Look at the output files in the Admixture folder. Based on today's lecture, what do you think each of these represent?
 
-We can visualize the admixture components of each individual using a barplot in R. For example, for K=3:
+We can visualize the admixture components of each individual using a barplot in R. For example, for K=3, we can type the following in R (make sure the directory names are correct):
 
 ```
 R
 K=3
-tbl <- read.table(paste("Admixture/HumanOriginsPublic2068_reduced_pruned.",K,".Q",sep=""),header=FALSE)
-inds <- read.table("Data/HumanOriginsPublic2068_reduced_pruned.fam",header=FALSE) 
+tbl <- read.table(paste("Admixture/AncientModern_reduced_pruned.",K,".Q",sep=""),header=FALSE)
+inds <- read.table("Data/AncientModern_reduced_pruned.fam",header=FALSE) 
 barplot(t(as.matrix(tbl)), col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.3,names=inds[,1])
 ```
+
 
 Note that there are visualization programs better suited for exploring results from Admixture and other programs based on the Structure algorithms. One that is very useful and practical to use is Pong: https://github.com/ramachandran-lab/pong
 
