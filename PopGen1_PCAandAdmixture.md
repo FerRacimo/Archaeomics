@@ -93,9 +93,9 @@ Let's create a parameter file for PCA (called pca.par), using your favorite text
 ```
 PCA:  [ YOUR PCA DIRECTORY NAME HERE ]
 DATA: [ YOUR DATA DIRECTORY NAME HERE ]
-genotypename: Data/AncientModern_reduced_pruned.bed
-snpname:      Data/AncientModern_reduced_pruned.bim
-indivname:    Data/AncientModern_reduced_pruned.fam
+genotypename: DATA/AncientModern_reduced_pruned.bed
+snpname:      DATA/AncientModern_reduced_pruned.bim
+indivname:    DATA/AncientModern_reduced_pruned.fam
 evecoutname:  PCA/eigenvectors.txt
 evaloutname:  PCA/eigenvalues.txt
 numoutlieriter: 0
