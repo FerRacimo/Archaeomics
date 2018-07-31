@@ -75,14 +75,14 @@ plink --bfile $DATA/AncientModern --keep-fam $DATA/groups_to_keep.txt --make-bed
 When computing a PCA or performing an Admixture analysis, large datasets take a long time to analyze. However, a lot of SNPs actually have redundant information, as they may sit on the same haplotype and be in strong linkage disequilibrium with each other. We can "thin" our data to remove SNPs based on their LD correlation coefficients, using plink, keeping (almost) the same amount of SNP data while significantly reducing the computational burden of our downstream algorithms. We can use the following commands to prune our data:
 
 ```
-plink --bfile $DATA/HumanOriginsPublic2068_reduced --indep-pairwise 50 10 0.1
-plink --bfile $DATA/HumanOriginsPublic2068_reduced --extract plink.prune.in --make-bed --out $DATA/HumanOriginsPublic2068_reduced_pruned
+plink --bfile $DATA/AncientModern_reduced --indep-pairwise 50 10 0.1
+plink --bfile $DATA/AncientModern_reduced --extract plink.prune.in --make-bed --out $DATA/AncientModern_reduced_pruned
 
 ```
 
 The first command makes a list of SNPs that will be targeted for removal. These are SNPs with an r^2 value greater than 0.1 with any other SNP within a 50-SNP sliding window (with a 10-SNP overlap between windows). The second command performs the pruning.
 
-Compare the number of SNPs in the $DATA/HumanOriginsPublic2068_reduced.bim file and the $DATA/HumanOriginsPublic2068_reduced_pruned.bim file. How many SNPs did we remove? How many did we keep?
+Compare the number of SNPs in the $DATA/AncientModern_reduced.bim file and the $DATA/AncientModern_reduced_pruned.bim file. How many SNPs did we remove? How many did we keep?
 
 # PCA
 
