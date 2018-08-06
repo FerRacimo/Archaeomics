@@ -26,6 +26,7 @@ paste <(cut -d ":" -f 2 $DATA/AncientModern_reduced_pruned.ind | cut -d " "  -f 
 mv $DATA/temp.txt $DATA/AncientModern_reduced_pruned.ind
 ```
 
+Take a look inside the new *ind*, *geno* and *snp* files. What do you see inside? How are they different from the plink format files?
 
 # Outgroup F3 statistics
 
