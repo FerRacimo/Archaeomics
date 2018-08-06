@@ -21,63 +21,23 @@ alias mergeit='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/merge
 alias admixture='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/admixture_linux-1.3.0/admixture'
 ```
 
-
 Now create a shortcut to your own data folder, and call that shortcut DATA. Thus, you will be easily able to dump all your intermediate data files. Type 'echo $DATA' to make sure you've created the shortcut successfully.
 
-
-# Data processing
-
-Before we can start our analysis, we'll need to clean our data for downstream analyses. We only want to work with autosomal SNPs, so we'll first make a record of the SNPs that are located in chrX and chrY, so we can get rid of them later.
-
-```
-cat $HUMOR/AncientModern.snp | tr -s " " | awk 'BEGIN{OFS="\t"}{if ($2 == "23" || $2 == "24") print}' > $DATA/toremove.snp
-```
-
-Now, let's convert the genotype file from "packed eigenstrat" format to "packed ped format. We'll need to define a parameter file for convertf, which we'll call geno2plink.par. Open your favorite text editor and write down the following lines
-
-IMPORTANT: you need to replace the DATA line for whichever Data folder you're working in!
-
-
-```
-HUMOR: /science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/Day3_data/HumanOriginsData 
-DATA: [ YOUR DATA FOLDER HERE ]
-genotypename:   HUMOR/AncientModern.geno
-snpname:        HUMOR/AncientModern.snp
-indivname:      HUMOR/AncientModern.ind
-outputformat:    PACKEDPED
-genotypeoutname: DATA/AncientModern.bed
-snpoutname:      DATA/AncientModern.bim
-indivoutname:    DATA/AncientModern.fam
-badsnpname:      DATA/toremove.snp
-```
-
-Save the file and name it 'geno2plink.par'. Now, run convertf:
-
-```
-convertf -p geno2plink.par
-```
-
-We now need to fix the *fam file to remove unwanted spaces:
-
-```
-paste <(cat $HUMOR/AncientModern.ind | awk '{print $3}') <( cat $DATA/AncientModern.fam | awk 'BEGIN{OFS="\t"}{print $2,$3,$4,$5,$6}') > temp.fam
-mv temp.fam $DATA/AncientModern.fam
-```
-
-Now, we'll make a list of populations ("plink families") to focus on for donwstream analyses, and extract them from the plink file. We'll extract a subset of modern and ancient populations:
-
-```
-echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\nHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana\nEurope_LNBA\nSteppe_EMBA" > $DATA/groups_to_keep.txt
-plink --bfile $DATA/AncientModern --keep-fam $DATA/groups_to_keep.txt --make-bed --out $DATA/AncientModern_reduced
-```
-
 # LD pruning
+
+We'll start with a set of files in plink format. Plink files usually come in sets of 3: a *fam* file, a *bim* file and a *bed* file. Our files will have the following names:
+
+$HUMOR/AncientModern_reduced.bim
+$HUMOR/AncientModern_reduced.fam
+$HUMOR/AncientModern_reduced.bed
+
+Take a look inside these three files. You can use the program *less*. What do you see inside? The bed file is compressed, and contains the genotypes of each individual in the *fam* file, ordered by the positions in the *bim* file.
 
 When computing a PCA or performing an Admixture analysis, large datasets take a long time to analyze. However, a lot of SNPs actually have redundant information, as they may sit on the same haplotype and be in strong linkage disequilibrium with each other. We can "thin" our data to remove SNPs based on their LD correlation coefficients, using plink, keeping (almost) the same amount of SNP data while significantly reducing the computational burden of our downstream algorithms. We can use the following commands to prune our data:
 
 ```
-plink --bfile $DATA/AncientModern_reduced --indep-pairwise 50 10 0.1
-plink --bfile $DATA/AncientModern_reduced --extract plink.prune.in --make-bed --out $DATA/AncientModern_reduced_pruned
+plink --bfile $HUMOR/AncientModern_reduced --indep-pairwise 50 10 0.1
+plink --bfile $HUMOR/AncientModern_reduced --extract plink.prune.in --make-bed --out $DATA/AncientModern_reduced_pruned
 ```
 
 The first command makes a list of SNPs that will be targeted for removal. These are SNPs with an r^2 value greater than 0.1 with any other SNP within a 50-SNP sliding window (with a 10-SNP overlap between windows). The second command performs the pruning.
@@ -88,7 +48,7 @@ Compare the number of SNPs in the $DATA/AncientModern_reduced.bim file and the $
 
 Now create a directory called 'PCA' and also create a shortcut for it called PCA.
 
-Let's create a parameter file for PCA (called pca.par), using your favorite text editor. IMPORTANT: make sure your directory names are correctly written!
+We'll need to define a parameter file for convertf, which we'll call pca.par. Open your favorite text editor and write down the following lines. IMPORTANT: make sure your directory names are correctly written!
 
 ```
 genotypename: [ YOUR DATA DIRECTORY NAME HERE ]/AncientModern_reduced_pruned.bed
