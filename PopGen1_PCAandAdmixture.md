@@ -28,7 +28,9 @@ Now create a shortcut to your own data folder, and call that shortcut DATA. Thus
 We'll start with a set of files in plink format. Plink files usually come in sets of 3: a *fam* file, a *bim* file and a *bed* file. Our files will have the following names:
 
 $HUMOR/AncientModern_reduced.bim
+
 $HUMOR/AncientModern_reduced.fam
+
 $HUMOR/AncientModern_reduced.bed
 
 Take a look inside these three files. You can use the program *less*. What do you see inside? The bed file is compressed, and contains the genotypes of each individual in the *fam* file, ordered by the positions in the *bim* file.
