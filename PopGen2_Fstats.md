@@ -1,6 +1,16 @@
 
 # Data processing
 
+Before we start, in case you logged off after the morning class, let's re-define some of our original shortcuts:
+
+```
+HUMOR=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/Day3_data/HumanOriginsData
+SCRIPTS=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/scripts
+alias plink='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/plink1.9/plink'
+alias convertf='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/convertf'
+alias mergeit='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/mergeit'
+```
+
 First, let's convert our pruned plink files to eigenstrat format. Use a new parameter file (plink2geno.par), with the following information:
 
 ```
