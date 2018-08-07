@@ -60,9 +60,9 @@ French  Ami Ju_hoan_North
 We also need to create a parameter file (OutgroupF3.par) to specify the location of our input files:
 
 ```
-genotypename:   [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.geno
-snpname:	[YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.snp
-indivname:	[YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.ind
+genotypename:   [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.geno
+snpname:	[YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.snp
+indivname:	[YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.ind
 popfilename:    OutgroupF3_French.txt
 ```
 
@@ -99,7 +99,7 @@ Now, we'll hypothesize that French are an admixed group resulting from the mixtu
 We'll use a pre-made R script (scripts/BuildF3List.R) to iterate over all possible pairs of populations that do not include French:
 
 ```
-cut -f 3 $DATA/HumanOriginsPublic2068_reduced_pruned.ind | sort | uniq > allpops.txt
+cut -f 3 $DATA/AncientModern_reduced_pruned.ind | sort | uniq > allpops.txt
 Rscript $SCRIPTS/BuildF3List.R allpops.txt French
 ```
 
@@ -108,9 +108,9 @@ We now have a new output file called "f3target_French.popfile", which always con
 Let's prepare a parameter file, this time called AdmxitureF3.par:
 
 ```
-genotypename:   [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.geno
-snpname:	[YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.snp
-indivname:	[YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.ind
+genotypename:   [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.geno
+snpname:	[YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.snp
+indivname:	[YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.ind
 popfilename:    f3target_French.popfile
 ```
 
@@ -151,9 +151,9 @@ French  Sardinian       Yoruba          Ju_hoan_North
 The parameter file (Dstats.par) should include the following information:
 
 ```
-genotypename:   [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.geno
-snpname:        [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.snp
-indivname:      [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.ind
+genotypename:   [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.geno
+snpname:        [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.snp
+indivname:      [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.ind
 popfilename:    Dstats_French.txt
 ```
 
@@ -185,20 +185,21 @@ mkdir TreeMix
 First, we need to stratify our individual allele frequencies by populations. For this, we'll use the --freq functionality in plink:
 
 ```
-plink --bfile $DATA/HumanOriginsPublic2068_reduced_pruned --freq --missing --family --out $DATA/HumanOriginsPublic2068_reduced_pruned
-gzip $DATA/HumanOriginsPublic2068_reduced_pruned.frq.strat
+plink --bfile $DATA/AncientModern_reduced_pruned --freq --missing --family --out $DATA/AncientModern_reduced_pruned
+gzip $DATA/AncientModern_reduced_pruned.frq.strat
 ```
 
 Let's convert our plink files into treemix format.
 
 ```
-python $SCRIPTS/plink2treemix.py $DATA/HumanOriginsPublic2068_reduced_pruned.frq.strat.gz $DATA/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz
+python $SCRIPTS/plink2treemix.py $DATA/AncientModern_reduced_pruned.frq.strat.gz $DATA/AncientModern_reduced_pruned.treemix.frq.gz
 ```
 Now, let's sequentially run TreeMix with 0, 1, 2 and 3 migration events. We'll set Ju_hoan_North to be on one side of the root of the tree.
 
 ```
 for mig in {0,1,2,3}; do
-treemix -i $DATA/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz -o TreeMix/treemix_output_m$mig -m $mig -root Ju_hoan_North -k 50
+treemix -i $DATA/AncientModern
+_reduced_pruned.treemix.frq.gz -o TreeMix/treemix_output_m$mig -m $mig -root Ju_hoan_North -k 50
 done
 ```
 
