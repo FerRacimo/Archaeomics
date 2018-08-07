@@ -105,7 +105,7 @@ Rscript $SCRIPTS/BuildF3List.R allpops.txt French
 
 We now have a new output file called "f3target_French.popfile", which always contains the French in the 3rd column and all other possible pairs of populations in the first and second columns.
 
-Let's prepare a parameter file, this time called AdmxitureF3.par:
+Let's prepare a parameter file, this time called AdmixtureF3.par:
 
 ```
 genotypename:   [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.geno
