@@ -99,8 +99,8 @@ Now, we'll hypothesize that French are an admixed group resulting from the mixtu
 We'll use a pre-made R script (scripts/BuildF3List.R) to iterate over all possible pairs of populations that do not include French:
 
 ```
-cut -f 3 Data/HumanOriginsPublic2068_reduced_pruned.ind | sort | uniq > allpops.txt
-Rscript scripts/BuildF3List.R allpops.txt French
+cut -f 3 $DATA/HumanOriginsPublic2068_reduced_pruned.ind | sort | uniq > allpops.txt
+Rscript $SCRIPTS/BuildF3List.R allpops.txt French
 ```
 
 We now have a new output file called "f3target_French.popfile", which always contains the French in the 3rd column and all other possible pairs of populations in the first and second columns.
@@ -108,9 +108,9 @@ We now have a new output file called "f3target_French.popfile", which always con
 Let's prepare a parameter file, this time called AdmxitureF3.par:
 
 ```
-genotypename:   Data/HumanOriginsPublic2068_reduced_pruned.geno
-snpname:	Data/HumanOriginsPublic2068_reduced_pruned.snp
-indivname:	Data/HumanOriginsPublic2068_reduced_pruned.ind
+genotypename:   [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.geno
+snpname:	[YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.snp
+indivname:	[YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.ind
 popfilename:    f3target_French.popfile
 ```
 
@@ -151,9 +151,9 @@ French  Sardinian       Yoruba          Ju_hoan_North
 The parameter file (Dstats.par) should include the following information:
 
 ```
-genotypename:   Data/HumanOriginsPublic2068_reduced_pruned.geno
-snpname:        Data/HumanOriginsPublic2068_reduced_pruned.snp
-indivname:      Data/HumanOriginsPublic2068_reduced_pruned.ind
+genotypename:   [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.geno
+snpname:        [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.snp
+indivname:      [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.ind
 popfilename:    Dstats_French.txt
 ```
 
@@ -185,20 +185,20 @@ mkdir TreeMix
 First, we need to stratify our individual allele frequencies by populations. For this, we'll use the --freq functionality in plink:
 
 ```
-plink --bfile Data/HumanOriginsPublic2068_reduced_pruned --freq --missing --family --out Data/HumanOriginsPublic2068_reduced_pruned
-gzip Data/HumanOriginsPublic2068_reduced_pruned.frq.strat
+plink --bfile $DATA/HumanOriginsPublic2068_reduced_pruned --freq --missing --family --out $DATA/HumanOriginsPublic2068_reduced_pruned
+gzip $DATA/HumanOriginsPublic2068_reduced_pruned.frq.strat
 ```
 
 Let's convert our plink files into treemix format.
 
 ```
-python scripts/plink2treemix.py Data/HumanOriginsPublic2068_reduced_pruned.frq.strat.gz Data/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz
+python $SCRIPTS/plink2treemix.py $DATA/HumanOriginsPublic2068_reduced_pruned.frq.strat.gz $DATA/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz
 ```
 Now, let's sequentially run TreeMix with 0, 1, 2 and 3 migration events. We'll set Ju_hoan_North to be on one side of the root of the tree.
 
 ```
 for mig in {0,1,2,3}; do
-treemix -i Data/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz -o TreeMix/treemix_output_m$mig -m $mig -root Ju_hoan_North -k 50
+treemix -i $DATA/HumanOriginsPublic2068_reduced_pruned.treemix.frq.gz -o TreeMix/treemix_output_m$mig -m $mig -root Ju_hoan_North -k 50
 done
 ```
 
@@ -212,7 +212,7 @@ We can visualize the results using R scripts that can be downloaded along with t
 
 ```
 R
-source("scripts/plotting_funcs.R")
+source("/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/scripts/plotting_funcs.R")
 plot_tree("TreeMix/treemix_output_m0")
 ```
 
@@ -223,8 +223,6 @@ Take a look at the length of the branches in the tree. Why are some branches muc
 You can also plot the residual fits from each graph. For example, for the graph containing no migrations:
 
 ```
-R
-source("scripts/plotting_funcs.R")
 plot_resid("TreeMix/treemix_output_m0", "TreeMix/pop_order.txt")
 ```
 
