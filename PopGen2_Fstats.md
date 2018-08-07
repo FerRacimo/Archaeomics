@@ -198,8 +198,7 @@ Now, let's sequentially run TreeMix with 0, 1, 2 and 3 migration events. We'll s
 
 ```
 for mig in {0,1,2,3}; do
-treemix -i $DATA/AncientModern
-_reduced_pruned.treemix.frq.gz -o TreeMix/treemix_output_m$mig -m $mig -root Ju_hoan_North -k 50
+treemix -i $DATA/AncientModern_reduced_pruned.treemix.frq.gz -o TreeMix/treemix_output_m$mig -m $mig -root Ju_hoan_North -k 50
 done
 ```
 
