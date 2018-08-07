@@ -12,18 +12,18 @@ alias qp3Pop='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/AdmixTools/bin
 alias qpDstat='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/AdmixTools/bin/qpDstat'
 ```
 
-You may also need to re-define the alias to your $DATA folder.
+You will also need to re-define the alias to your particular $DATA folder.
 
 Now, let's convert our pruned plink files to eigenstrat format. Write a new parameter file (let's call it plink2geno.par), with the following information:
 
 ```
-genotypename: Data/AncientModern_reduced_pruned.bed
-snpname: Data/AncientModern_reduced_pruned.bim
-indivname: Data/AncientModern_reduced_pruned.fam
+genotypename: [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.bed
+snpname: [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.bim
+indivname: [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.fam
 outputformat: EIGENSTRAT
-genotypeoutname: Data/AncientModern_reduced_pruned.geno
-snpoutname: Data/AncientModern_reduced_pruned.snp
-indivoutname: Data/AncientModern_reduced_pruned.ind
+genotypeoutname: [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.geno
+snpoutname: [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.snp
+indivoutname: [YOUR DATA DIRECTORY HERE]/AncientModern_reduced_pruned.ind
 ```
 
 Run convertf:
