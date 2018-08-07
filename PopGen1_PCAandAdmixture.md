@@ -130,6 +130,8 @@ indstoplot <- seq(150,250)
 barplot(t(as.matrix(tbl))[,indstoplot], col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.8,names=inds[indstoplot,1])
 ```
 
+Do you notice any admixed individuals? How are Mayans modeled under this value of K?
+
 Note that there are visualization programs better suited for exploring results from Admixture and other programs based on the Structure algorithms. One that is very useful and practical to use is Pong: https://github.com/ramachandran-lab/pong An R package that can also help with visualization of Admixture results is pophelper: https://github.com/royfrancis/pophelper
 
 We can also look at the cross-validation errors:
