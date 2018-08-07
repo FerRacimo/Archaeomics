@@ -1,17 +1,20 @@
 
 # Data processing
 
-Before we start, in case you logged off after the morning class, let's re-define some of our original shortcuts:
+Before we start, let's define some shortcuts again:
 
 ```
 HUMOR=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/Day3_data/HumanOriginsData
 SCRIPTS=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/scripts
 alias plink='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/plink1.9/plink'
 alias convertf='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/convertf'
-alias mergeit='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/mergeit'
+alias qp3Pop='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/AdmixTools/bin/qp3Pop'
+alias qpDstat='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/AdmixTools/bin/qpDstat'
 ```
 
-First, let's convert our pruned plink files to eigenstrat format. Use a new parameter file (plink2geno.par), with the following information:
+You may also need to re-define the alias to your $DATA folder.
+
+Now, let's convert our pruned plink files to eigenstrat format. Write a new parameter file (let's call it plink2geno.par), with the following information:
 
 ```
 genotypename: Data/AncientModern_reduced_pruned.bed
@@ -57,9 +60,9 @@ French  Ami Ju_hoan_North
 We also need to create a parameter file (OutgroupF3.par) to specify the location of our input files:
 
 ```
-genotypename:   Data/HumanOriginsPublic2068_reduced_pruned.geno
-snpname:	Data/HumanOriginsPublic2068_reduced_pruned.snp
-indivname:	Data/HumanOriginsPublic2068_reduced_pruned.ind
+genotypename:   [YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.geno
+snpname:	[YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.snp
+indivname:	[YOUR DATA DIRECTORY HERE]/HumanOriginsPublic2068_reduced_pruned.ind
 popfilename:    OutgroupF3_French.txt
 ```
 
