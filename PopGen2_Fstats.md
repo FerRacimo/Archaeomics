@@ -96,7 +96,7 @@ axis(1, at=1:numrows, labels=f3ordered$PopB, las=2)
 
 Now, we'll hypothesize that French are an admixed group resulting from the mixture of two populations. We'll try to find the pair of populations in our panel that can best stand in for those two populations. For this, we'll resort to using Admixture F3 statistics, in which the population of interest (French) is now placed in the third position of our population file (where Ju_hoan_North was previously when computing Outgroup F3 statistics). The first and second column will be a candidate pair of populations. The more negative the Admixture F3 statistic, the stronger the violation of "tree-ness" relating the 3 populations - an indication of admixture or population structure.
 
-We'll use a pre-made R script (scripts/BuildF3List.R) to iterate over all possible pairs of populations that do not include French:
+We'll use a pre-made R script ($SCRIPTS/BuildF3List.R) to iterate over all possible pairs of populations that do not include French:
 
 ```
 cut -f 3 $DATA/AncientModern_reduced_pruned.ind | sort | uniq > allpops.txt
