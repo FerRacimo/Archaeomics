@@ -1,7 +1,7 @@
 Exercises using PCA and Admixture
 ===============
 
-In this tutorial we will be using a combination of whole-genome and SNP capture datasets assembled by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomic data from both ancient and present-day populations from around the world.
+In this tutorial we will be using a combination of whole-genome and single-nucleotide polymorphism (SNP) capture datasets assembled by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomic data from both ancient and present-day populations from around the world.
 
 The data files can be found here:
 
@@ -35,7 +35,7 @@ $HUMOR/AncientModern_reduced.bed
 
 Take a look inside these three files. You can use the program *less*. What do you see inside? The bed file is compressed, and contains the genotypes of each individual in the *fam* file, ordered by the positions in the *bim* file.
 
-When computing a PCA or performing an Admixture analysis, large datasets take a long time to analyze. However, a lot of SNPs actually have redundant information, as they may sit on the same haplotype and be in strong linkage disequilibrium with each other. We can "thin" our data to remove SNPs based on their LD correlation coefficients, using plink, keeping (almost) the same amount of SNP data while significantly reducing the computational burden of our downstream algorithms. We can use the following commands to prune our data:
+When computing a PCA or performing an Admixture analysis, large datasets take a long time to analyze. However, a lot of SNPs actually have redundant information, as they may sit on the same haplotype and be in strong linkage disequilibrium (LD) with each other. We can "thin" our data to remove SNPs based on their LD correlation coefficients (r^2), using plink, keeping (almost) the same amount of information while significantly reducing the computational burden of our downstream algorithms. We can use the following commands to prune our data:
 
 ```
 plink --bfile $HUMOR/AncientModern_reduced --indep-pairwise 50 10 0.1
