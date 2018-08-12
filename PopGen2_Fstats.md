@@ -1,3 +1,11 @@
+# SSH
+
+Let's log in to the servers as usual (make sure you use the option -Y):
+
+```
+ssh -Y [YOUR KU ID]@ssh-snm-archaeo.science.ku.dk
+ssh -Y archaeo-snm.science.domain
+```
 
 # Data processing
 
