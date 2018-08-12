@@ -1,3 +1,6 @@
+F-statistics and admixture graphs
+===============
+
 # SSH
 
 Let's log in to the servers as usual (make sure you use the option -Y):
