@@ -228,7 +228,7 @@ source("/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/scripts/plott
 plot_tree("TreeMix/treemix_output_m0")
 ```
 
-Plot the other graphs and study their respective topologies. Which admixture events do you observe? Do these make sense based on your knowledge of human history? Note that some migration events may be added because of poor representation of certain populations that may have been important in human history. For example, we're not including Denisovans and Neanderthals in our graphs, which are known to have contributed ancestry to Papuans and non-Africans, respectively.
+Plot the other graphs (with 1, 2 and 3 migrations events) and study their respective topologies. Which admixture events do you observe? Do these make sense based on your knowledge of human history? Note that some migration events may be added because of poor representation of certain populations that may have been important in human history. For example, we're not including Denisovans and Neanderthals in our graphs, which are known to have contributed ancestry to Papuans and non-Africans, respectively.
 
 Take a look at the length of the branches in the tree. Why are some branches much longer than others? What does the length here represent?
 
