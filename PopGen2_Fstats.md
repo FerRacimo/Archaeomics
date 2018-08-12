@@ -144,6 +144,7 @@ Finally, we can further confirm that there's been an admixture event in the past
 As before, we need to create a population file (Dstats_French.txt), but this time it will have to have quadruplets instead of triplets:
 
 ```
+French  Sardinian       Steppe_EMBA       Ju_hoan_North
 French  Sardinian       Karitiana       Ju_hoan_North
 French  Sardinian       Yoruba          Ju_hoan_North
 ```
@@ -167,7 +168,7 @@ Look at the output log file. The first numerical column corresponds to the value
 
 Are any of the two statistics significant? In what direction? (i.e. is there an excess of ABBA or BABA patterns, relative to what you would expect under a 4-population tree?). What could this mean?
 
-To read more about this signal, you can check out the following papers, which suggest that a Northern Eurasian population that contributed ancestry to Native Americans also admixed with the ancestors of certain European populations, including French. Sardinians have almost none of this admixture, which is why F3(Sardinian,Karitiana,French) is so negative:
+To read more about this signal, you can check out the following papers, which suggest that a Northern Eurasian Steppe population that contributed ancestry to Native Americans also admixed with the ancestors of certain European populations, including French. Sardinians have almost none of this admixture, which is why F3(Sardinian,Karitiana,French) is so negative:
 
 http://www.genetics.org/content/192/3/1065
 
