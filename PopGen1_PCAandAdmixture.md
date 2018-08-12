@@ -1,4 +1,4 @@
-Exercises using PCA and Admixture
+PCA and Admixture
 ===============
 
 # SSH
