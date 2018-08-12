@@ -1,6 +1,17 @@
 Exercises using PCA and Admixture
 ===============
 
+# SSH
+
+Let's log in to the servers (make sure you use the option -Y):
+
+```
+ssh -Y [YOUR KU ID]@ssh-snm-archaeo.science.ku.dk
+ssh -Y archaeo-snm.science.domain
+```
+
+# Data and shortcuts
+
 In this tutorial we will be using a combination of whole-genome and single-nucleotide polymorphism (SNP) capture datasets assembled by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomic data from both ancient and present-day populations from around the world.
 
 The data files can be found here:
