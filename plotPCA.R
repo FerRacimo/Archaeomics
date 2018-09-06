@@ -1,44 +1,39 @@
-# Usage: Rscript -i infile.covar -c component1-component2 -a annotation.file -o outfile.eps
-
 library(optparse)
 library(ggplot2)
 
-option_list <- list(make_option(c('-i','--in_file'), action='store', type='character', default=NULL, help='Input file (output from ngsCovar)'),
-                    make_option(c('-c','--comp'), action='store', type='character', default=1-2, help='Components to plot'),
-                    make_option(c('-a','--annot_file'), action='store', type='character', default=NULL, help='Annotation file with individual classification (2 column TSV with ID and ANNOTATION)'),
-                    make_option(c('-o','--out_file'), action='store', type='character', default=NULL, help='Output file')
+option_list <- list(make_option(c('-a','--eigenvalues'), action='store', type='character', default=NULL, help='Eigenvalue file'),
+		    make_option(c('-e','--eigenvectors'), action='store', type='character', default=NULL, help='Eigenvector file'),
+                    make_option(c('-c','--comp'), action='store', type='character', default=1-2, help='Number of components'),
+                    make_option(c('-f','--famfile'), action='store', type='character', default=NULL, help='fam file'),
+                    make_option(c('-o','--outfile'), action='store', type='character', default=NULL, help='Output file')
                     )
 opt <- parse_args(OptionParser(option_list = option_list))
 
-# Annotation file is in plink cluster format
-
-#################################################################################
-
-# Read input file
-covar <- read.table(opt$in_file, stringsAsFact=FALSE);
-
-# Read annot file
-annot <- read.table(opt$annot_file, sep="\t", header=TRUE); # note that plink cluster files are usually tab-separated instead
 
 # Parse components to analyze
 comp <- as.numeric(strsplit(opt$comp, "-", fixed=TRUE)[[1]])
 
-# Eigenvalues
-eig <- eigen(covar, symm=TRUE);
-eig$val <- eig$val/sum(eig$val);
-cat(signif(eig$val, digits=3)*100,"\n");
+eigenvalues <- read.table(opt$eigenvalues,header=FALSE)
+eigenvalues <- eigenvalues / sum(eigenvalues)
+eigenvectors <- read.table(opt$eigenvectors,header=FALSE,skip=1)
+eigenvectors <- eigenvectors[,-dim(eigenvectors)[2]]
+pops <- read.table(opt$famfile,header=FALSE)
 
 # Plot
-PC <- as.data.frame(eig$vectors)
-colnames(PC) <- gsub("V", "PC", colnames(PC))
-PC$Pop <- factor(annot$CLUSTER)
+PC <- as.data.frame(eigenvectors)
+PC[,1] <- factor(pops[,1])
+colnames(PC) <-  c("Pop",paste("PC",seq(1,dim(PC)[2]-1),sep=""))
 
-title <- paste("PC",comp[1]," (",signif(eig$val[comp[1]], digits=3)*100,"%)"," / PC",comp[2]," (",signif(eig$val[comp[2]], digits=3)*100,"%)",sep="",collapse="")
+title <- paste("PC",comp[1]," (",signif(eigenvalues[comp[1],], digits=3)*100,"%)"," / PC",comp[2]," (",signif(eigenvalues[comp[2],], digits=3)*100,"%)",sep="",collapse="")
 
 x_axis = paste("PC",comp[1],sep="")
 y_axis = paste("PC",comp[2],sep="")
 
+pdf(opt$outfile)
 ggplot() + geom_point(data=PC, aes_string(x=x_axis, y=y_axis, color="Pop")) + ggtitle(title)
-ggsave(opt$out_file)
-unlink("Rplots.pdf", force=TRUE)
+dev.off()
 
+
+#ggsave(opt$outfile)
+#print("HERE")
+#unlink("Rplots.pdf", force=TRUE)
