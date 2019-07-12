@@ -1,1 +1,1 @@
-# Archaeomics course 2018
+# Archaeomics course 2019
