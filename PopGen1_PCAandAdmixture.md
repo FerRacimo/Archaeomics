@@ -17,14 +17,14 @@ In this tutorial we will be using a combination of whole-genome and single-nucle
 The data files can be found here:
 
 ```
-/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/Day3_data/HumanOriginsData
+/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/2019/Day3_data/HumanOriginsData
 ```
 
 Let's create a shortcut to this folder, so that we can easily reference it when working from our own personal folders. We'll also create an alias for certain programs that we will use  below.
 
 ```
-HUMOR=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/Day3_data/HumanOriginsData
-SCRIPTS=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/class_aDNA_2018/scripts
+HUMOR=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/2019/Day3_data/HumanOriginsData
+SCRIPTS=/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/2019/scripts
 alias plink='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/plink1.9/plink'
 alias smartpca='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/smartpca'
 alias convertf='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/EIG/bin/convertf'
