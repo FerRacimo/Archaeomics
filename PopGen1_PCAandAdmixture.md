@@ -80,7 +80,7 @@ Save this to a file called pca.par. The last two lines of this file server to en
  echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\nHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana" > $PCA/pca_populations.txt
  ```
 
-There's one last thing we need to do. For some weird reason, smartpca only recognizes population names if they're in the sixth column of the plink file, so we'll have to format the sixth column appropriately:
+There's one last thing we need to do: smartpca only recognizes population names if they're in the sixth column of the plink file, so we'll have to format the sixth column appropriately:
 
 ```
 paste <(cat $DATA/AncientModern_reduced_pruned.fam | awk '{print $1,$2,$3,$4,$5,$1}') > temp.fam
