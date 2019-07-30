@@ -110,25 +110,31 @@ Let's create a directory to dump our Admixture ouput files:
 mkdir Admixture
 ```
 
-Now, we'll run the Admixture program with K=2, K=3 and K=4 and K=5 ancestral components. Note that this will take some time to run as the algorithm performs a series of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call). We'll use the --cv flag so that the program also performs 5-fold cross-validation in each run.
+Now, we'll run the Admixture program with K=1, K=2, K=3 and K=4 and K=5 ancestral components. Note that this will take some time to run as the algorithm performs a series of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call). We'll use the --cv flag so that the program also performs 5-fold cross-validation in each run.
 
 ```
 cd Admixture
-for K in {2..5}; do
+for K in {1..5}; do
 admixture --cv $DATA/AncientModern_reduced_pruned.bed $K  | tee log_${K}.out
 done
 cd ..
 ```
 
-Look at the output files in the Admixture folder. Based on today's lecture, what do you think each of these represent?
+This step can take a long time to run. In the interest of time, I've already run these commands and left the output in this folder. You can continue working from these pre-made output files:
+
+```
+/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/2019/Day3_data/Admixture
+```
+
+Look at the output files in the Admixture folder. Use the 'less' command to read each file. Based on today's lecture, what do you think each of the columns and rows represent?
 
 We can visualize the admixture components of each individual using a barplot in R. For example, for K=5, we can type the following in R (make sure the directory name is correct):
 
 ```
 R
 K=5
-Admdir <- [YOUR ADMIXTURE DIRECTORY HERE]
-Datadir <- [YOUR DATA DIRECTORY HERE ] 
+Admdir <- [YOUR ADMIXTURE OUTPUT DIRECTORY HERE]
+Datadir <- [YOUR DATA INPUT DIRECTORY HERE ] 
 tbl <- read.table(paste(Admdir,"/AncientModern_reduced_pruned.",K,".Q",sep=""),header=FALSE)
 inds <- read.table(paste(Datadir,"/AncientModern_reduced_pruned.fam",sep=""),header=FALSE) 
 barplot(t(as.matrix(tbl)), col=rainbow(K), xlab="Individual #", ylab="Ancestry", border=NA,las=2,cex.names=0.3,names=inds[,1])
