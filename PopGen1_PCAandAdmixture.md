@@ -110,11 +110,11 @@ Let's create a directory to dump our Admixture ouput files:
 mkdir Admixture
 ```
 
-Now, we'll run the Admixture program with K=1, K=2, K=3 and K=4 and K=5 ancestral components. Note that this will take some time to run as the algorithm performs a series of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call). We'll use the --cv flag so that the program also performs 5-fold cross-validation in each run.
+Now, we'll run the Admixture program with K=2, K=3 and K=4 and K=5 ancestral components. Note that this will take some time to run as the algorithm performs a series of EM steps until it converges. In the mean time, you may want to review the lectures from today (or check facebook, your call). We'll use the --cv flag so that the program also performs 5-fold cross-validation in each run.
 
 ```
 cd Admixture
-for K in {1..5}; do
+for K in {2..5}; do
 admixture --cv $DATA/AncientModern_reduced_pruned.bed $K  | tee log_${K}.out
 done
 cd ..
