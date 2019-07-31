@@ -102,6 +102,10 @@ xpdf $PCA/PCA_World.pdf
 
 Which groups are separated along the first component of variation? Which groups are separated along the second component? Why do you think this is? How much of the total variance is captured by the first and second principal components?
 
+# Projecting ancient individuals into a present-day PCA
+
+...
+
 # Admixture analysis
 
 Let's create a directory to dump our Admixture ouput files:
