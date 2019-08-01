@@ -74,7 +74,7 @@ poplistname:  [YOUR PCA DIRECTORY NAME HERE]/pca_populations.txt
 lsqproject: YES
 ```
 
-Save this to a file called pca.par. The last two lines of this file server to ensure that the principal components will only be computed with the populations listed in the file "pca_populations.txt". As ancient DNA tends to be of lower quality and have more missing data than modern DNA, researchers traditionally calculate the principal components using modern genomes only, and then "project" the ancient genomes onto the modern PCA. Let's create the pca_popualtions.txt file:
+Save this to a file called pca.par. The last two lines of this file server to ensure that the principal components will only be computed with the present-day populations listed in the file "pca_populations.txt". As ancient DNA tends to be of lower quality and have more missing data than modern DNA, we will calculate the principal components using present-day genomes only, and then "project" the ancient genomes onto the modern PCA. Let's create the pca_popualtions.txt file:
 
  ```
  echo -e "Ju_hoan_North\nSardinian\nFrench\nItalian_North\nHan\nAmi\nYoruba\nMbuti\nPapuan\nOrcadian\nMayan\nKaritiana" > $PCA/pca_populations.txt
