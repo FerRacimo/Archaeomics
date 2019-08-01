@@ -106,9 +106,6 @@ Which groups are separated along the first component of variation? Which groups 
 
 Where are the ancient Western Eurasian populations located in the PCA plot? Is one of these populations closer to present-day Western Eurasians than the other? Why do you think this is so?
 
-# Projecting ancient individuals into a present-day PCA
-
-...
 
 # Admixture analysis
 
