@@ -10,7 +10,7 @@ ssh -Y [YOUR KU ID]@ssh-snm-archaeo.science.ku.dk
 ssh -Y archaeo-snm.science.domain
 ```
 
-# Data and shortcuts
+# Folders and shortcuts
 
 In this tutorial we will be using a combination of whole-genome and single-nucleotide polymorphism (SNP) capture datasets assembled by the Reich lab as part of a paleogenomic study of Europe and the Middle East (Lazaridis et al. 2016). The dataset contains genomic data from both ancient and present-day populations from around the world.
 
@@ -34,7 +34,7 @@ alias admixture='/science/groupdirs-nfs/SCIENCE-SNM-Archaeo/software/admixture_l
 
 Now create a shortcut to your own data folder, and call that shortcut DATA. Thus, you will be easily able to dump all your intermediate data files. Type 'echo $DATA' to make sure you've created the shortcut successfully.
 
-# LD pruning
+# Input files
 
 We'll start with a set of files in plink format. Plink files usually come in sets of 3: a *fam* file, a *bim* file and a *bed* file. Our files will have the following names:
 
@@ -44,9 +44,11 @@ $HUMOR/AncientModern_reduced.fam
 
 $HUMOR/AncientModern_reduced.bed
 
-Take a look inside these three files. You can use the program *less*. What do you see inside? The bed file is compressed, and contains the genotypes of each individual in the *fam* file, ordered by the positions in the *bim* file. The *fam* file contains the list of individuals and their population labels.
+Take a look inside these three files. You can use the program *less*. What do you see inside? The bed file is compressed so it will look like non-sense when you open it. It contains the genotypes of each individual in the *fam* file, ordered by the positions listed in the *bim* file. The *fam* file contains the list of individuals and their population labels.
 
 Note that most individuals (from populations like the Yoruba, Sardinians, French, etc.) are present-day samples, but a few of these are from ancient Western Eurasian samples. Specifically, the "Steppe_EMBA" samples are ancient genomes from individuals found in the Eurasian Steppe and dated to the Early to Middle Bronze Age. For those who have a strong arcaheological background, these include individuals associated with the Yamnaya, Afanasievo and Poltavka cultures. The "Europe_LNBA" samples are ancient genomes from individuals found in Europe and dated to the Late Neolithic and Bronze Age. These are thought to be the descendants of an admixture process involving local European Neolithic peoples and Steppe peoples that migrated into Europe about 5,000 years ago. 
+
+# LD pruning
 
 When computing a PCA or performing an Admixture analysis, large datasets take a long time to analyze. However, a lot of SNPs actually have redundant information, as they may sit on the same haplotype and be in strong linkage disequilibrium (LD) with each other. We can "thin" our data to remove SNPs based on their LD correlation coefficients (r^2), using plink, keeping (almost) the same amount of information while significantly reducing the computational burden of our downstream algorithms. We can use the following commands to prune our data:
 
