@@ -6,7 +6,7 @@ Building some intuition with the Wright-Fisher model
 Go to:
 https://phytools.shinyapps.io/drift-selection/
 
-This is a Wright-Fisher simulator. The plotted line represents the frequency of one allele as the populations evolves over time. 
+This is a Wright-Fisher simulator. The plotted line represents the frequency of one allele as the populations evolves over time. For this tutorial, we will only simulate neutral alleles, so we won't modify the fitnesses of the 3 genotypes. Set the starting frequency of the allele at 50%. Set the population size to 20 and the number of generations to 400. Now generate 10 simulations. How many simulations result in the allele being either fixed (100% frequency) or extinct (0% frequency) by the time the simulation ends? Try increasing the population size to 500, but keep the same number of generations as before. How many simulations result in fixation or extinction now? How many simulations have the allele still segregating in the population? Why do you think this is so?
 
 # Thinking backwards in time
 
