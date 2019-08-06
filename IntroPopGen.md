@@ -1,14 +1,14 @@
-##Building some intuition with the Wright-Fisher model and genealogies
+Building some intuition with the Wright-Fisher model and genealogies
+===============
 
-Thinking forwards in time
+# Thinking forwards in time
 
 Go to:
 https://phytools.shinyapps.io/drift-selection/
 
 This is a Wright-Fisher simulator. The plotted line represents the frequency of one allele as the populations evolves over time. 
 
-
-Thinking backwards in time
+# Thinking backwards in time
 
 Go to:
 https://phytools.shinyapps.io/coalescent-plot/
