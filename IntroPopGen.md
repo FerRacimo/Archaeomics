@@ -1,4 +1,4 @@
-Building some intuition with the Wright-Fisher model and genealogies
+Building some intuition with the Wright-Fisher model
 ===============
 
 # Thinking forwards in time
